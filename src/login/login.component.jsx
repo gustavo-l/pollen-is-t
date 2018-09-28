@@ -5,6 +5,7 @@ import { RenderInput } from '../common/util/redux-form/input.forms'
 import { withRouter } from 'react-router'
 
 import { Button } from '../common/components/button/button.component'
+import { CheckBox } from '../common/components/togglable/checkbox.component'
 
 import { login } from './login.async.js'
 import { validate } from './login.validate.js'
@@ -25,6 +26,13 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
                 <div className="separator">
                     <span className="separator-text">OU</span>
                     <hr />
+                </div>
+                <div className="rememberme-container">
+                    <CheckBox
+                        className="rememberme-item"
+                        label="Lembrar de mim?"
+                    />
+                    <a href="#">Precisa de ajuda?</a>
                 </div>
                 <Field name="user" label="Usuario" component={RenderInput} />
                 <Field
