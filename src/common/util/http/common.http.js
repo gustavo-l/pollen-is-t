@@ -32,7 +32,7 @@ class HttpClient {
         return new Promise(async (resolve, reject) => {
             try {
                 const response =
-                    typeof params == null
+                    typeof params === 'undefined'
                         ? await this.instance.get(url, {
                               params,
                               headers: this.setHeaders(token)
