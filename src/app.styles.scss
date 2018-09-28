@@ -1,0 +1,63 @@
+//Colors
+$life-blood: #FF8081;
+$patina: #027987;
+$pale-sky: #6b717f;
+$dark-wood: #484848;
+//
+$color-facebook-blue: #4B65B2;
+$color-google-red: #ab3f30;
+///
+///Definitions
+///
+$color-shadow: rgba(0, 0, 0, 0.3);
+$color-primary: $life-blood;
+$color-accent: $patina;
+$color-background: #ffffff;
+$color-background-shade: rgb(216, 216, 216);
+$color-background-invert: darken($pale-sky, 15);
+$color-text: $dark-wood;
+$color-text-weak: lighten($dark-wood, 12.5);
+$color-text-link: $patina;
+$color-text-link-visited: darken($patina, 15);
+$color-text-link-hover: darken($patina, 15);
+$color-border: $pale-sky;
+$color-primary-button-text: $dark-wood;
+$color-error: darken($life-blood, 15);
+///
+///BreakPoints
+///
+$mobile-small: 240px;
+$mobile-large: 320px;
+$tablet-small: 480px;
+$tablet-large: 768px;
+$screen-small: 1024px;
+$screen-large: 1280px;
+//
+$primary-border-style: 1px solid #aaa;
+$shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+//
+$font: 'Montserrat';
+$font-style: '';
+//
+$spacing-small: 6px;
+//
+#root {
+    font-family: $font;
+    font-style: $font-style;
+}
+
+$change-amount: 2;
+@mixin actionsColors($color) {
+    &:hover {
+        background-color: lighten($color, $change-amount);
+    }
+    &:active {
+        background-color: darken($color, $change-amount);
+    }
+}
+
+span.inpt-error-text {
+    display: inline-block;
+    color: red;
+    margin-bottom: $spacing-small;
+}

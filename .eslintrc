@@ -1,0 +1,21 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 9,
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "no-console": 0,
+        "react/prop-types": false,
+        "react/display-name": false,
+        "no-unused-vars": 0,
+        "semi": [2, "never"],
+        "no-empty": "off"
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended"]
+}
