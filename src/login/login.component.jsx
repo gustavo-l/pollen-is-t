@@ -1,39 +1,19 @@
 import React from 'react'
-import { reduxForm, Field, SubmissionError } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import { RenderInput } from '../common/util/redux-form/input.forms'
 
-import { httpClient } from '../common/util/http/common.http'
+import { withRouter } from 'react-router'
+
 import { Button } from '../common/components/button/button.component'
-import { Input } from '../common/components/input/input.component'
+
+import { login } from './login.async.js'
+import { validate } from './login.validate.js'
 
 import './login.styles.scss'
 
-async function getusers(data) {
-    try {
-        alert(JSON.stringify(data))
-        const response = await httpClient.post({ url: '/auth', data })
-        console.log(response.data)
-    } catch (err) {
-        throw new SubmissionError({
-            password: 'Usuario ou senha incorretos'
-        })
-    }
-}
-
-const RenderInput = ({ input, label, type, meta }) => (
-    <div>
-        <Input
-            {...input}
-            fullwidth
-            inform
-            type={type}
-            placeholder={label.concat('...')}
-            error={meta.touched && meta.error ? meta.error : undefined}
-        />
-    </div>
-)
-const DemoForm = ({ handleSubmit, submitting, error }) => (
+const LoginForm = ({ handleSubmit, submitting, error }) => (
     <div className="panel">
-        <form onSubmit={handleSubmit(getusers)}>
+        <form onSubmit={handleSubmit(login)}>
             <div>
                 {error && <strong>{error}</strong>}
                 <Button disabled={submitting} facebook fullwidth inform>
@@ -61,14 +41,9 @@ const DemoForm = ({ handleSubmit, submitting, error }) => (
     </div>
 )
 
-const validate = values => {
-    const errors = {}
-    if (!values.user) errors.user = 'Digite o usuário'
-    if (!values.password) errors.password = 'Digite a senha'
-    return errors
-}
-
-export default reduxForm({
-    form: 'login',
-    validate
-})(DemoForm)
+export default withRouter(
+    reduxForm({
+        form: 'login',
+        validate
+    })(LoginForm)
+)

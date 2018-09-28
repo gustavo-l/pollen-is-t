@@ -20,15 +20,20 @@ const Loading = ({ isLoading, error }) => {
     }
 }
 
-const Login = Loadable({
+const LoginForm = Loadable({
     loader: () => import('../login/login.component'),
+    loading: Loading
+})
+const SignupForm = Loadable({
+    loader: () => import('../signup/signup.component'),
     loading: Loading
 })
 
 export const Routes = () => (
     <div>
         <Switch>
-            <Route to="/login" component={Login} />
+            <Route path="/login" exact strict component={LoginForm} />
+            <Route path="/signup" exact strict component={SignupForm} />
         </Switch>
     </div>
 )
