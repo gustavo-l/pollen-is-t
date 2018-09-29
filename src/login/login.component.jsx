@@ -8,7 +8,7 @@ import { Button } from '../common/components/button/button.component'
 import { CheckBox } from '../common/components/togglable/checkbox.component'
 
 import { login } from './login.async.js'
-import { validate } from './login.validate.js'
+import { validate } from './login.validation.js'
 
 import './login.styles.scss'
 
