@@ -1,0 +1,19 @@
+@import '../../../app.styles.scss';
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    border: $border;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    height: 90px;
+    .navitem {
+        display: inline-block;
+        text-align: center;
+        padding: 35px;
+        font-family: $font;
+        @include actionsColors(#EDEDED);
+        &:hover {
+            border-bottom: 4px $patina solid;
+            cursor: pointer;
+        }
+    }
+}

@@ -46,8 +46,7 @@ $border: 1px solid #dce0e0;
 $prefixes: webkit moz ms o;
 //
 #root {
-    font-family: $font;
-    font-style: $font-style;
+    font-family: $font; // font-style: $font-style;
 }
 
 $change-amount: 2;

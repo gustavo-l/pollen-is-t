@@ -27,13 +27,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
                     <span className="separator-text">OU</span>
                     <hr />
                 </div>
-                <div className="rememberme-container">
-                    <CheckBox
-                        className="rememberme-item"
-                        label="Lembrar de mim?"
-                    />
-                    <a href="#">Precisa de ajuda?</a>
-                </div>
+
                 <Field name="user" label="Usuario" component={RenderInput} />
                 <Field
                     name="password"
@@ -41,6 +35,13 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
                     type="password"
                     component={RenderInput}
                 />
+                <div className="rememberme-container">
+                    <CheckBox
+                        className="rememberme-item"
+                        label="Lembrar de mim?"
+                    />
+                    <a href="#">Precisa de ajuda?</a>
+                </div>
                 <Button type="submit" disabled={submitting} fullwidth inform>
                     Entrar
                 </Button>
