@@ -2,7 +2,11 @@ import React from 'react'
 
 import { Routes } from './main.routes'
 import { withRouter } from 'react-router'
-import { Navbar, Navitem } from '../common/components/navbar/navbar.component'
+import {
+    Navbar,
+    Navitem,
+    NavitemDropdown
+} from '../common/components/navbar/navbar.component'
 const Main = props => (
     <div>
         <Navbar logo="../../public/img/Pollen.svg">
