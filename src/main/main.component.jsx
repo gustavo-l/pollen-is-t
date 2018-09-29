@@ -2,10 +2,16 @@ import React from 'react'
 
 import { Routes } from './main.routes'
 import { withRouter } from 'react-router'
-import { AppBar } from '../common/components/appbar/appbar.component'
+import { Navbar, Navitem } from '../common/components/navbar/navbar.component'
 const Main = props => (
     <div>
-        <AppBar />
+        <Navbar logo="../../public/img/Pollen.svg">
+            <Navitem label="Configurações" />
+            <Navitem label="Ajuda" />
+            <Navitem label="Loja Admin" />
+            <Navitem label="Loja Comerciante" />
+            <Navitem label="Cliente" />
+        </Navbar>
         <div>
             <Routes />
         </div>
