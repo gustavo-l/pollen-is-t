@@ -1,6 +1,4 @@
 @import '../../../app.styles.scss';
-
-
 .btn {
     font-family: $font;
     font-size: 16px;
@@ -13,8 +11,7 @@
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
-    cursor: pointer; 
-    //dsad
+    cursor: pointer; //dsad
     //
     //
     @include actionsColors($color-primary);
@@ -24,7 +21,6 @@
     &.facebook {
         background-color: $color-facebook-blue;
         @include actionsColors($color-facebook-blue);
-
     }
     &.google {
         background-color: $color-google-red;
@@ -33,9 +29,8 @@
     &.inform {
         margin-bottom: $spacing-small;
     }
-   
     &:disabled {
         background-color: $dark-wood;
     }
+    @include prefix((user-select: none));
 }
-
