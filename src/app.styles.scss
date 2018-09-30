@@ -1,11 +1,11 @@
 //Colors
-$life-blood: #FF8081;
+$life-blood: rgb(255, 90, 95);
 $patina: #027987;
 $pale-sky: #6b717f;
 $dark-wood: #484848;
 //
-$color-facebook-blue: #4B65B2;
-$color-google-red: #ab3f30;
+$color-facebook-blue: #fff;
+$color-google-red: #fff;
 ///
 ///Definitions
 ///
@@ -36,7 +36,7 @@ $screen-large: 1280px;
 $primary-border-style: 1px solid #aaa;
 $shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 //
-$font: 'Montserrat';
+$font: Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif; //'Montserrat';
 $font-style: '';
 //
 $spacing-small: 8px;
@@ -45,39 +45,86 @@ $border: 1px solid #dce0e0;
 //
 $prefixes: webkit moz ms o;
 //
+* {
+	box-sizing: border-box;
+}
+.row::after {
+	content: '';
+	clear: both;
+	display: table;
+}
+[class*='col-'] {
+	float: left;
+	padding: 15px;
+}
+.col-1 {
+	width: 8.33%;
+}
+.col-2 {
+	width: 16.66%;
+}
+.col-3 {
+	width: 25%;
+}
+.col-4 {
+	width: 33.33%;
+}
+.col-5 {
+	width: 41.66%;
+}
+.col-6 {
+	width: 50%;
+}
+.col-7 {
+	width: 58.33%;
+}
+.col-8 {
+	width: 66.66%;
+}
+.col-9 {
+	width: 75%;
+}
+.col-10 {
+	width: 83.33%;
+}
+.col-11 {
+	width: 91.66%;
+}
+.col-12 {
+	width: 100%;
+}
 #root {
-    font-family: $font; // font-style: $font-style;
+	font-family: $font; // font-style: $font-style;
 }
 
 $change-amount: 2;
 @mixin actionsColors($color) {
-    &:hover {
-        background-color: lighten($color, $change-amount);
-    }
-    &:active {
-        background-color: darken($color, $change-amount);
-    }
+	&:hover {
+		background-color: lighten($color, $change-amount);
+	}
+	&:active {
+		background-color: darken($color, $change-amount);
+	}
 }
 
 @mixin prefix($declarations) {
-    @each $property,
-    $value in $declarations {
-        @each $prefix in $prefixes {
-            #{'-' + $prefix + '-' + $property}: $value;
-        }
-        #{$property}: $value;
-    }
+	@each $property, $value in $declarations {
+		@each $prefix in $prefixes {
+			#{'-' + $prefix + '-' + $property}: $value;
+		}
+		#{$property}: $value;
+	}
 }
 
 span.inpt-error-text {
-    display: inline-block;
-    color: red;
-    margin-bottom: $spacing-small;
+	display: inline-block;
+	color: rgb(255, 90, 95);
+	margin-bottom: $spacing-small;
 }
 
 a {
-    color: $patina;
-    &:visited {
-        color: $patina;
-    }
+	color: $patina;
+	&:visited {
+		color: $patina;
+	}
 }
