@@ -1,5 +1,4 @@
 @import '../../../app.styles.scss';
-<<<<<<< HEAD
 
 .btn {
 	font-family: $font;
@@ -40,40 +39,3 @@
 		background-color: $dark-wood;
 	}
 }
-=======
-.btn {
-    font-family: $font;
-    font-size: 16px;
-    background-color: $color-primary;
-    border: none;
-    color: white;
-    padding: 25px 20px 20px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer; //dsad
-    //
-    //
-    @include actionsColors($color-primary);
-    &.fullwidth {
-        width: 100%;
-    }
-    &.facebook {
-        background-color: $color-facebook-blue;
-        @include actionsColors($color-facebook-blue);
-    }
-    &.google {
-        background-color: $color-google-red;
-        @include actionsColors($color-google-red);
-    }
-    &.inform {
-        margin-bottom: $spacing-small;
-    }
-    &:disabled {
-        background-color: $dark-wood;
-    }
-    @include prefix((user-select: none));
-}
->>>>>>> 042cd61b1c52fcef4e338c769ac325ae920acbf8
