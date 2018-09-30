@@ -1,5 +1,6 @@
 @import '../app.styles.scss';
 hr {
+<<<<<<< HEAD
 	display: block;
 	unicode-bidi: isolate;
 	margin-block-start: 0.5em;
@@ -11,6 +12,21 @@ hr {
 	width: 100%;
 	border-top: 1px solid #dce0e0;
 	box-sizing: border-box;
+=======
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-left: none;
+    border-right: none;
+    margin: -16px auto 10px;
+    width: 100%;
+    border-top: 1px solid #dce0e0;
+    box-sizing: border-box;
+>>>>>>> 042cd61b1c52fcef4e338c769ac325ae920acbf8
 }
 
 .separator {
@@ -21,6 +37,7 @@ hr {
 }
 
 .separator-text {
+<<<<<<< HEAD
 	background-color: #fff;
 	display: inline-block;
 	padding: 6px 8px 6px 8px;
@@ -35,6 +52,23 @@ hr {
 	margin: 80px auto 50px auto;
 	min-width: 500px;
 	max-width: 500px;
+=======
+    background-color: #fff;
+    display: inline-block;
+    padding: 6px 8px 6px 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: default;
+    @include prefix((user-select: none))
+}
+
+.panel {
+    padding: 30px;
+    border: $border;
+    margin: 30px auto 0px auto;
+    min-width: 400px;
+    max-width: 400px;
+>>>>>>> 042cd61b1c52fcef4e338c769ac325ae920acbf8
 }
 
 .rememberme-container {

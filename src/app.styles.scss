@@ -94,8 +94,12 @@ $prefixes: webkit moz ms o;
 	width: 100%;
 }
 #root {
+<<<<<<< HEAD
 	font-family: $font;
 	font-style: $font-style;
+=======
+    font-family: $font; // font-style: $font-style;
+>>>>>>> 042cd61b1c52fcef4e338c769ac325ae920acbf8
 }
 
 $change-amount: 2;

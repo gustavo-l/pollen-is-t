@@ -1,4 +1,4 @@
-const validate = values => {
+export const validate = values => {
     const errors = {}
     if (!values.user) errors.user = 'Digite o usuário'
     if (!values.firstname) errors.firstname = 'Digite o nome'
