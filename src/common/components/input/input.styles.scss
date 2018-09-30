@@ -1,19 +1,19 @@
 @import '../../../app.styles.scss';
 .inpt {
-	font-family: $font;
-	display: inline-block;
-	padding: 11px 11px 11px 11px;
-	box-sizing: border-box;
-	display: inline-block;
-	font-size: 16px;
-	border: $primary-border-style;
-	&.fullwidth {
-		width: 100%;
-	}
-	&.error {
-		border: solid rgb(250, 90, 95) 1px;
-	}
-	&.inform {
-		margin-bottom: $spacing-small;
-	}
+    font-family: $font;
+    display: inline-block;
+    padding: 11px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 16px;
+    border: $primary-border-style;
+    &.fullwidth {
+        width: 100%;
+    }
+    &.error {
+        border: solid rgb(250, 90, 95) 1px;
+    }
+    &.inform {
+        margin-bottom: $spacing-small;
+    }
 }

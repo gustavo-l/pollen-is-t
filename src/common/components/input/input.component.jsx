@@ -2,14 +2,15 @@ import React from 'react'
 import './input.styles.scss'
 import classNames from 'classnames'
 
-export const Input = ({ fullwidth, inform, error, ...props }) => (
+export const Input = ({ fullwidth, inform, error, large, ...props }) => (
     <div>
         <input
             className={classNames(
                 'inpt',
                 fullwidth ? 'fullwidth' : '',
                 error ? 'error' : '',
-                inform ? 'inform' : ''
+                inform ? 'inform' : '',
+                large ? 'large' : ''
             )}
             {...props}
         >

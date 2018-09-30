@@ -44,7 +44,13 @@ const LoginForm = ({ handleSubmit, submitting }) => (
                 />
 
                 <Field name="user" label="Usuário" component={RenderInput} />
-                <Button type="submit" disabled={submitting} fullwidth inform>
+                <Button
+                    type="submit"
+                    large
+                    disabled={submitting}
+                    fullwidth
+                    inform
+                >
                     Cadastrar
                 </Button>
             </div>

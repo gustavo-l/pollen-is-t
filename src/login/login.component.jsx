@@ -20,15 +20,17 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
                 type="text"
                 name="user"
                 label="Endereço de e-mail"
+                large
                 component={RenderInput}
             />
             <Field
                 type="password"
                 name="password"
                 label="Palavra-passe"
+                large
                 component={RenderInput}
             />
-            <Button type="submit" disabled={submitting} fullwidth inform>
+            <Button type="submit" large disabled={submitting} fullwidth inform>
                 Entrar
             </Button>
             <div className="rememberme-container">
