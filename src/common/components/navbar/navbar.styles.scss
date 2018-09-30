@@ -22,11 +22,17 @@
     @include prefix (( user-select: none));
     .navitem {
         @include navItem();
+        @include mediaRemoveDisplay($tablet-large);
     }
     .logo {
         margin-right: auto;
         margin-left: $spacing-small;
         cursor: pointer;
         @include prefix (( user-select: none));
+    }
+    .menu {
+        display: none;
+        margin-right: $spacing-small;
+        @include mediaShow($tablet-large);
     }
 }

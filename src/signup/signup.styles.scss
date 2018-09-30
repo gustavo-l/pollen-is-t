@@ -35,4 +35,10 @@ hr {
     margin: 90px auto 0px auto;
     min-width: 400px;
     max-width: 400px;
+    @include mediaRemoveMargin($tablet-large);
+}
+
+.signup-alt {
+    text-align: center;
+    margin: $spacing-small * 2.5;
 }
