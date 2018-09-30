@@ -19,15 +19,15 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
             <Field
                 type="text"
                 name="user"
-                label="Endereço de e-mail"
                 large
+                label="Endereço de e-mail"
                 component={RenderInput}
             />
             <Field
                 type="password"
                 name="password"
-                label="Palavra-passe"
                 large
+                label="Palavra-passe"
                 component={RenderInput}
             />
             <Button type="submit" large disabled={submitting} fullwidth inform>
