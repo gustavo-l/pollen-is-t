@@ -16,7 +16,7 @@
 		opacity: 0;
 		cursor: pointer;
 	}
-	.input[type='checkbox']:checked ~ .checkmark {
+	input[type='checkbox']:checked ~ .checkmark {
 		background-color: $color-primary;
 	}
 	@include prefix(

@@ -32,21 +32,21 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
 				Entrar
 			</Button>
 			<div className="rememberme-container">
-				<CheckBox className="rememberme-item" label="Lembrar" />
+				<CheckBox className="flexitem-1" label="Lembrar" />
 				<a href="#">Precisa de ajuda?</a>
 			</div>
 			<div className="separator">
 				<span className="separator-text">ou continue com</span>
 				<hr />
 			</div>
-			<div className="row">
-				<div className="col-6">
+			<div className="register-options-container">
+				<div className="flexitem-1 item-margin">
 					{error && <strong>{error}</strong>}
 					<Button disabled={submitting} facebook fullwidth inform>
 						Facebook
 					</Button>
 				</div>
-				<div className="col-6">
+				<div className="flexitem-1 item-margin">
 					<Button disabled={submitting} google fullwidth inform>
 						Google
 					</Button>

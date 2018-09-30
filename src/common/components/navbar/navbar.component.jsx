@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 
 import './navbar.styles.scss'
 
-export const Navbar = ({ children, logo }) => (
+export const Navbar = ({ children, logo, menu }) => (
 	<nav className="navbar">
 		<img src={logo} alt="Logo" className="logo" draggable={false} />
 		{children}
+		<img src={menu} alt="Menu" className="menu" draggable={false} />
 	</nav>
 )
 
