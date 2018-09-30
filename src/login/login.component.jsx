@@ -19,18 +19,18 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
             <Field
                 type="text"
                 name="user"
-                large
+                small
                 label="Endereço de e-mail"
                 component={RenderInput}
             />
             <Field
                 type="password"
                 name="password"
-                large
+                small
                 label="Palavra-passe"
                 component={RenderInput}
             />
-            <Button type="submit" large disabled={submitting} fullwidth inform>
+            <Button type="submit" small disabled={submitting} fullwidth inform>
                 Entrar
             </Button>
             <div className="rememberme-container">
@@ -41,14 +41,15 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
                 <span className="separator-text">ou continue com</span>
                 <hr />
             </div>
+
             <div className="register-options-container">
-                <div className="flexitem-1 item-margin">
+                <div className="item-margin flexitem-1">
                     {error && <strong>{error}</strong>}
                     <Button disabled={submitting} facebook fullwidth inform>
                         Facebook
                     </Button>
                 </div>
-                <div className="flexitem-1 item-margin">
+                <div className="item-margin flexitem-1">
                     <Button disabled={submitting} google fullwidth inform>
                         Google
                     </Button>

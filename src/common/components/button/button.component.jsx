@@ -8,6 +8,7 @@ export const Button = ({
     inform,
     google,
     large,
+    small,
     ...props
 }) => (
     <button
@@ -17,7 +18,8 @@ export const Button = ({
             facebook ? 'facebook' : '',
             google ? 'google' : '',
             inform ? 'inform' : '',
-            large ? 'large' : ''
+            large ? 'large' : '',
+            small ? 'small' : ''
         )}
         {...props}
     >

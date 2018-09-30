@@ -51,6 +51,8 @@ $prefixes: webkit moz ms o;
 //
 .flexitem-1 {
     flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
 }
 
 .flexitem-2 {
@@ -116,6 +118,10 @@ $change-amount: 2;
 
 .large {
     padding: 25px 11px 25px 11px;
+}
+
+.small {
+    padding: 15px 11px 15px 11px;
 }
 
 span.inpt-error-text {

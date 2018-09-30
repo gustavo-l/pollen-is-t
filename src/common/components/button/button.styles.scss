@@ -1,41 +1,36 @@
 @import '../../../app.styles.scss';
-
 .btn {
-	font-family: $font;
-	font-size: 16px;
-	background-color: $color-primary;
-	border: none;
-	color: white;
-	padding: 12px 0 12px 0;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	border-radius: 5px;
-	cursor: pointer;
-	//dsad
-	//
-	//
-	@include actionsColors($color-primary);
-	&.fullwidth {
-		width: 100%;
-	}
-	&.facebook {
-		background-color: $color-facebook-blue;
-		//@include actionsColors($color-facebook-blue);
-		color: rgb(72, 72, 72);
-		border: 2px solid rgb(72, 72, 72);
-	}
-	&.google {
-		background-color: $color-google-red;
-		//@include actionsColors($color-google-red);
-		color: rgb(72, 72, 72);
-		border: 2px solid rgb(72, 72, 72);
-	}
-	&.inform {
-		margin-bottom: $spacing-small;
-	}
-
-	&:disabled {
-		background-color: $dark-wood;
-	}
+    font-family: $font;
+    font-size: 16px;
+    background-color: $color-primary;
+    border: none;
+    color: white;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer; //dsad
+    //
+    //
+    @include actionsColors($color-primary);
+    &.fullwidth {
+        width: 100%;
+    }
+    &.facebook {
+        background-color: $color-facebook-blue; //@include actionsColors($color-facebook-blue);
+        color: rgb(72, 72, 72);
+        border: 2px solid rgb(72, 72, 72);
+    }
+    &.google {
+        background-color: $color-google-red; //@include actionsColors($color-google-red);
+        color: rgb(72, 72, 72);
+        border: 2px solid rgb(72, 72, 72);
+    }
+    &.inform {
+        margin-bottom: $spacing-small;
+    }
+    &:disabled {
+        background-color: $dark-wood;
+    }
 }
