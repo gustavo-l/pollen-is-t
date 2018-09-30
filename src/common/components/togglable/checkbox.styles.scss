@@ -11,12 +11,12 @@
         margin-top: 2px;
         display: inline-block;
     }
-    .checkbox {
+    input[type=checkbox] {
         position: absolute;
         opacity: 0;
         cursor: pointer;
     }
-    .checkbox:checked~.checkmark {
+    input[type=checkbox]:checked~.checkmark {
         background-color: $color-primary;
     }
     @include prefix((user-select: none))
@@ -44,7 +44,7 @@
     display: none;
 }
 
-.container .checkbox:checked~.checkmark:after {
+.container input[type=checkbox]:checked~.checkmark:after {
     display: inline-block;
 }
 

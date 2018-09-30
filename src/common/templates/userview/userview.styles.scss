@@ -1,0 +1,11 @@
+@import '../../../app.styles.scss';
+.userview-container {
+    display: flex;
+    justify-content: space-evenly;
+    border: $border;
+    .userview-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}

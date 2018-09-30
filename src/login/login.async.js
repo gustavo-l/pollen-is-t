@@ -6,6 +6,7 @@ export async function login(data) {
         alert(JSON.stringify(data))
         const response = await httpClient.post({ url: '/auth', data })
         alert(JSON.stringify(response.data))
+        localStorage.setItem('token', response.data.token)
     } catch (err) {
         throw new SubmissionError({
             user: 'Usuario ou senha incorretos',
