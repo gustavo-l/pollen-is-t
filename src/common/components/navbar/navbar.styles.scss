@@ -1,31 +1,41 @@
 @import '../../../app.styles.scss';
 @mixin navItem {
-    display: inline-block;
-    text-align: center;
-    padding: 35px;
-    font-family: $font;
-    @include actionsColors(#EDEDED);
-    &:hover {
-        border-bottom: 4px $patina solid;
-        cursor: pointer;
-    }
+	margin-top: 12px;
+	padding: 20px;
+	font-family: $font;
+	color: #484848;
+	font-size: 14px;
+	font-weight: 520;
+	//@include actionsColors(#ededed);
+	&:hover {
+		border-bottom: 1px $pale-sky solid;
+		cursor: pointer;
+	}
 }
 
 .navbar {
-    display: flex;
-    justify-content: flex-end;
-    border: $border;
-    overflow: hidden;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-    height: 90px;
-    @include prefix((user-select: none));
-    .navitem {
-        @include navItem();
-    }
-    .logo {
-        margin-right: auto;
-        margin-left: $spacing-small;
-        cursor: pointer;
-        @include prefix((user-select: none));
-    }
+	display: flex;
+	justify-content: flex-end;
+	border: $border;
+	overflow: hidden;
+	box-shadow: 0 1px 0 #ebebeb !important; //0px 4px 20px rgba(0, 0, 0, 0.3);
+	height: 80px;
+	@include prefix(
+		(
+			user-select: none
+		)
+	);
+	.navitem {
+		@include navItem();
+	}
+	.logo {
+		margin-right: auto;
+		margin-left: $spacing-small;
+		cursor: pointer;
+		@include prefix(
+			(
+				user-select: none
+			)
+		);
+	}
 }

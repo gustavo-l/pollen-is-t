@@ -1,59 +1,67 @@
 @import '../../../app.styles.scss';
 .container {
-    display: inline-block;
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: $spacing-small * 3;
-    cursor: pointer;
-    font-size: 16px;
-    vertical-align: middle;
-    .checktext {
-        //margin-top: 0px;
-        display: inline-block;
-    }
-    .checkbox {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }
-    .checkbox:checked~.checkmark {
-        background-color: $color-primary;
-    }
-    @include prefix( ( user-select: none));
+	display: inline-block;
+	position: relative;
+	padding-left: 25px;
+	margin-bottom: $spacing-small * 3;
+	cursor: pointer;
+	font-size: 16px;
+	vertical-align: middle;
+	.checktext {
+		//margin-top: 0px;
+		display: inline-block;
+	}
+	input[type='checkbox'] {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+	}
+	.input[type='checkbox']:checked ~ .checkmark {
+		background-color: $color-primary;
+	}
+	@include prefix(
+		(
+			user-select: none
+		)
+	);
 }
 
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    border: $border;
-    border-radius: 5px;
-    background-color: white;
-    &::after {
-        content: '';
-        position: absolute;
-        display: none;
-    }
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 18px;
+	width: 18px;
+	border: $border;
+	border-radius: 5px;
+	background-color: white;
+	&::after {
+		content: '';
+		position: absolute;
+		display: none;
+	}
 }
 
 .checkmark:after {
-    content: '';
-    position: absolute;
-    display: none;
+	content: '';
+	position: absolute;
+	display: none;
 }
 
-.container .checkbox:checked~.checkmark:after {
-    display: inline-block;
+.container .input[type='checkbox']:checked ~ .checkmark:after {
+	display: inline-block;
 }
 
 .container .checkmark:after {
-    left: 5px;
-    top: 1px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    @include prefix( ( transform: rotate(45deg)));
+	left: 5px;
+	top: 1px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	@include prefix(
+		(
+			transform: rotate(45deg)
+		)
+	);
 }

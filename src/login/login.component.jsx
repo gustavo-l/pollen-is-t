@@ -18,7 +18,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
 			<h2>Entre para continuar</h2>
 			<Field
 				type="text"
-				name="username"
+				name="user"
 				label="Endereço de e-mail"
 				component={RenderInput}
 			/>
