@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
+import { users } from '../user/user.duck'
+
 export const hashHistory = createHashHistory()
 
 /**
@@ -19,7 +21,8 @@ const middleware = composeWithDevTools(
  * *Reducer responsável pelos formulários da aplicação
  */
 const rootReducer = combineReducers({
-    form: formReducer
+    form: formReducer,
+    users
 })
 
 export const store = createStore(

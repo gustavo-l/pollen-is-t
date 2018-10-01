@@ -9,7 +9,7 @@ import './userview.styles.scss'
 export const UserView = ({ avatar, active, data }) => (
     <div className="userview-container">
         <div className="userview-checkbox">
-            <Field name={data._id} component={RenderCheckBox} />
+            <CheckBox name={data._id} label="" />
         </div>
         <img
             src={avatar}
@@ -18,9 +18,9 @@ export const UserView = ({ avatar, active, data }) => (
             draggable={false}
         />
         <div className="userview-data">
-            {Object.values(data).map(data => (
-                <strong key={data}>{data}</strong>
-            ))}
+            <strong>{data._id}</strong>
+            <strong>{data.email}</strong>
+            <strong>{data.user}</strong>
         </div>
         <div className={active ? 'userview-active' : 'userview-inactive'}>
             <strong>{active ? 'ATIVO' : 'INATIVO'}</strong>
