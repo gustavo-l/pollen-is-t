@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from '../common/components/button/button.component'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { loadUsers } from './user.duck'
+import { loadUsers } from './user.actions'
 import { UserView } from '../common/templates/userview/userview.component'
 class User extends React.PureComponent {
     async componentDidMount() {

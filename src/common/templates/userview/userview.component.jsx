@@ -8,22 +8,25 @@ import './userview.styles.scss'
 
 export const UserView = ({ avatar, active, data }) => (
     <div className="userview-container">
-        <div className="userview-checkbox">
+        <div className="userview-checkbox flexitem-1">
             <CheckBox name={data._id} label="" />
         </div>
-        <img
-            src={avatar}
-            alt="Avatar"
-            className="userview-avatar"
-            draggable={false}
-        />
-        <div className="userview-data">
-            <strong>{data._id}</strong>
-            <strong>{data.email}</strong>
-            <strong>{data.user}</strong>
+        <div className="flexitem-1 userview-avatar">
+            <img src={avatar} alt="Avatar" draggable={false} />
         </div>
-        <div className={active ? 'userview-active' : 'userview-inactive'}>
-            <strong>{active ? 'ATIVO' : 'INATIVO'}</strong>
+        <div className="userview-data flexitem-1">
+            <span>{data._id}</span>
+            <span>{data.email}</span>
+            <span>{data.user}</span>
+        </div>
+        <div
+            className={
+                active
+                    ? 'userview-active flexitem-1'
+                    : 'userview-inactive flexitem-1'
+            }
+        >
+            <span>{active ? 'ATIVO' : 'INATIVO'}</span>
         </div>
     </div>
 )

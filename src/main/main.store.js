@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
-import { users } from '../user/user.duck'
+import { users } from '../user/user.reducer'
 
 export const hashHistory = createHashHistory()
 
