@@ -21,6 +21,12 @@ const Loading = ({ isLoading, error }) => {
     }
 }
 
+/**
+ * !IMPORTANTE: SEMPRE QUE TIVER UM COMPONENTE ACESSADO POR ROTA, USAR LOADABLE PARA CODE-SPLIT
+ * ? COMO ULTILIZAR LOADABLE: const Componente = Loadable({loader: () => import('MODULO'), loading: Loading})
+ * *Definições de rotas
+ */
+
 const LoginForm = Loadable({
     loader: () => import('../login/login.component'),
     loading: Loading
@@ -34,6 +40,12 @@ const User = Loadable({
     loader: () => import('../user/user.component'),
     loading: Loading
 })
+
+/**
+ * *Switch: Força apenas uma rota ser renderizada
+ * *SecureRoute: Rota segura, verifica autenticação através do ?RouteGuard
+ *
+ */
 
 export const Routes = () => (
     <div>
@@ -50,7 +62,19 @@ export const Routes = () => (
     </div>
 )
 
+/**
+ * ?RouteGuard: Objeto com uma propriedade principal: shouldRoute: () => Boolean | Promise<Boolean>
+ * *RouteGuard: Retorna um boolean sync/async determinando se a rota é acessível
+ *
+ */
+
+/**
+ * @property {function}
+ */
 const RouteGuard = {
+    /**
+     * @returns {Promise<Boolean>}
+     */
     shouldRoute: () =>
         new Promise(async resolve => {
             try {
@@ -64,5 +88,3 @@ const RouteGuard = {
             }
         })
 }
-
-/**SecureRoute path='/users' component={UserListComponent} routeGuard={UserRouteGuard} redirectToPathWhenFail='/login'  */

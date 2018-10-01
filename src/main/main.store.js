@@ -7,10 +7,17 @@ import thunk from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
 export const hashHistory = createHashHistory()
 
+/**
+ * *middleware: middlewares da aplicação, thunk logger e router
+ */
 const middleware = composeWithDevTools(
     applyMiddleware(thunk, logger, routerMiddleware(hashHistory))
 )
 
+/**
+ * *form: formReducer
+ * *Reducer responsável pelos formulários da aplicação
+ */
 const rootReducer = combineReducers({
     form: formReducer
 })

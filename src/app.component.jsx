@@ -8,6 +8,13 @@ import { ConnectedRouter } from 'connected-react-router'
 import Main from './main/main.component'
 import '../public/index.scss'
 
+/**
+ * *HashRouter: Componente do react-router equivalente à <Router history={hash}></Router>
+ * *Provider: Provider da store do redux. Acessível com ex: connect(map, dispatch)(Component)
+ * *ConnectedRouter: Coloca informações da rota no redux
+ * *Main: Renderização principal da SPA
+ */
+
 ReactDOM.render(
     <HashRouter>
         <Provider store={store}>
