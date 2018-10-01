@@ -1,44 +1,51 @@
 @import '../app.styles.scss';
+@mixin font-top {
+	font-family: $font;
+	color: #484848;
+	font-size: 14px;
+	font-weight: 520;
+}
+
 hr {
-    display: block;
-    unicode-bidi: isolate;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-    overflow: hidden;
-    margin: -16px auto 10px;
-    width: 100%;
-    border: 0;
-    border-top: 1px solid #dce0e0;
-    box-sizing: border-box;
+	display: block;
+	unicode-bidi: isolate;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	margin-inline-start: auto;
+	margin-inline-end: auto;
+	overflow: hidden;
+	margin: -16px auto 10px;
+	width: 100%;
+	border: 0;
+	border-top: 1px solid #dce0e0;
+	box-sizing: border-box;
 }
 
 .separator {
-    background: none;
-    height: 34px;
-    position: relative;
-    text-align: center;
+	background: none;
+	height: 34px;
+	position: relative;
+	text-align: center;
 }
 
 .separator-text {
-    background-color: #fff;
-    display: inline-block;
-    padding: 6px 8px 6px 8px;
-    font-weight: bold;
-    font-size: 14px;
+	background-color: #fff;
+	display: inline-block;
+	padding: 6px 8px 6px 8px;
+	@include font-top();
 }
 
 .panel {
-    padding: 30px;
-    border: 1px solid #dce0e0;
-    margin: 90px auto 0px auto;
-    min-width: 400px;
-    max-width: 400px;
-    @include mediaRemoveMargin($tablet-large);
+	padding: 30px;
+	border: 1px solid #dce0e0;
+	margin: 80px auto 50px auto;
+	min-width: 400px;
+	max-width: 400px;
+	@include mediaRemoveMargin($tablet-large);
 }
 
 .signup-alt {
-    text-align: center;
-    margin: $spacing-small * 2.5;
+	text-align: center;
+	margin: $spacing-small * 2.5;
+	@include font-top();
 }
