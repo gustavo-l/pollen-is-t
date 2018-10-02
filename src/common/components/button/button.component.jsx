@@ -2,6 +2,10 @@ import React from 'react'
 import './button.styles.scss'
 import classNames from 'classnames'
 
+/**
+ * ?...props: O resto das propriedades que não interessam E.G: as propriedades do <button></button> JSX
+ */
+
 export const Button = ({
     fullwidth,
     facebook,

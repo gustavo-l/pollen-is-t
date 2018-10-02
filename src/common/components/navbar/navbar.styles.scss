@@ -17,7 +17,7 @@
 	justify-content: flex-end;
 	border: $border;
 	overflow: hidden;
-	box-shadow: 0 1px 0 #ebebeb !important; //0px 4px 20px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 1px 0 #ebebeb; //0px 4px 20px rgba(0, 0, 0, 0.3);
 	height: 80px;
 	@include prefix(
 		(
@@ -30,7 +30,7 @@
 	}
 	.logo {
 		margin-right: auto;
-		//margin-left: 20px; //$spacing-small;
+		margin-left: $spacing-small;
 		cursor: pointer;
 		@include prefix(
 			(

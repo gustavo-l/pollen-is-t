@@ -1,11 +1,48 @@
 @import '../../../app.styles.scss';
+@mixin autoMargin() {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .userview-container {
     display: flex;
     justify-content: space-evenly;
     border: $border;
+    margin: $spacing-small * 2.5;
+    padding: $spacing-small;
+    text-align: center;
     .userview-data {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        @include autoMargin();
+    }
+    .userview-avatar {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        flex-grow: 3;
+        @include autoMargin();
+        img {
+            display: inline-block;
+            width: auto;
+        }
+    }
+    .userview-checkbox {
+        @include autoMargin();
+        text-align: left;
+        flex-shrink: 3;
+        .container {
+            margin-bottom: 0;
+        }
+    }
+    .userview-active {
+        color: limegreen;
+        @include autoMargin();
+        @include mediaRemoveDisplay($tablet-large);
+    }
+    .userview-inactive {
+        @include autoMargin();
+        color: $color-primary
     }
 }
