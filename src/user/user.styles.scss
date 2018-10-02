@@ -10,16 +10,15 @@
         margin: $spacing-small * 2;
     }
     .headline-user {
-        margin: $spacing-small * 2.5;
-    }
-    .action-button:nth-child(2) {
-        margin-left: $spacing-small * 2;
-        margin-right: $spacing-small * 2;
-    }
-    .action-button:nth-child(1) {
-        margin-right: $spacing-small * 2;
-    }
-    .action-button:nth-child(3) {
-        margin-left: $spacing-small * 2;
+        display: flex;
+        justify-content: space-between;
+        .headline {
+            margin: auto $spacing-small * 2.5 auto $spacing-small * 2.5;
+            display: inline-block;
+        }
+        .action-button {
+            width: 18%;
+            margin: $spacing-small * 2.5;
+        }
     }
 }

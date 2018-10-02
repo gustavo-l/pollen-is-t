@@ -34,6 +34,7 @@ const LoginForm = Loadable({
     loader: () => import('../login/login.component'),
     loading: Loading
 })
+
 const SignupForm = Loadable({
     loader: () => import('../signup/signup.component'),
     loading: Loading
@@ -48,6 +49,12 @@ const Home = Loadable({
     loader: () => import('../home/home.component'),
     loading: Loading
 })
+
+const Product = Loadable({
+    loader: () => import('../product/product.component'),
+    loading: Loading
+})
+
 /**
  * *Switch: Força apenas uma rota ser renderizada
  * *SecureRoute: Rota segura, verifica autenticação através do ?RouteGuard
@@ -68,14 +75,14 @@ export const Routes = () => (
                 routeGuard={RouteGuard}
                 redirectToPathWhenFail="/login"
             />
-            {/* <SecureRoute
+            <SecureRoute
                 exact
                 strict
-                path="/"
-                component={Home}
+                path="/product"
+                component={Product}
                 routeGuard={RouteGuard}
                 redirectToPathWhenFail="/login"
-            /> */}
+            />
         </Switch>
     </div>
 )
