@@ -3,6 +3,9 @@ import Loadable from 'react-loadable'
 import { Route, Switch } from 'react-router'
 import { SecureRoute } from 'react-route-guard'
 import { httpClient } from '../common/util/http/common.http'
+import { store } from './main.store'
+import { tokenSelector } from './main.session'
+
 const Loading = ({ isLoading, error }) => {
     // Handle the loading state
     if (isLoading) {
@@ -41,6 +44,10 @@ const User = Loadable({
     loading: Loading
 })
 
+const Home = Loadable({
+    loader: () => import('../home/home.component'),
+    loading: Loading
+})
 /**
  * *Switch: Força apenas uma rota ser renderizada
  * *SecureRoute: Rota segura, verifica autenticação através do ?RouteGuard
@@ -52,12 +59,23 @@ export const Routes = () => (
         <Switch>
             <Route path="/login" exact strict component={LoginForm} />
             <Route path="/signup" exact strict component={SignupForm} />
+            <Route path="/" exact strict component={Home} />
             <SecureRoute
+                exact
+                strict
                 path="/user"
                 component={User}
                 routeGuard={RouteGuard}
                 redirectToPathWhenFail="/login"
             />
+            {/* <SecureRoute
+                exact
+                strict
+                path="/"
+                component={Home}
+                routeGuard={RouteGuard}
+                redirectToPathWhenFail="/login"
+            /> */}
         </Switch>
     </div>
 )
@@ -80,7 +98,7 @@ const RouteGuard = {
             try {
                 await httpClient.get({
                     url: '/verify',
-                    token: localStorage.getItem('token')
+                    token: tokenSelector(store.getState())
                 })
                 resolve(true)
             } catch (err) {

@@ -2,10 +2,13 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { createHashHistory } from 'history'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import logger from 'redux-logger'
-import thunk from 'redux-thunk'
+
 import { reducer as formReducer } from 'redux-form'
 import { users } from '../user/user.reducer'
+import { session } from './main.session'
+
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
 export const hashHistory = createHashHistory()
 
@@ -22,7 +25,8 @@ const middleware = composeWithDevTools(
  */
 const rootReducer = combineReducers({
     form: formReducer,
-    users
+    users,
+    session
 })
 
 export const store = createStore(

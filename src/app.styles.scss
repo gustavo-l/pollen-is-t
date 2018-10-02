@@ -36,7 +36,11 @@ $screen-large: 1280px;
 $primary-border-style: 1px solid #aaa;
 $shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 //
-$font: Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font: Circular,
+'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif;
 $font-style: '';
 //
 $spacing-small: 8px;
@@ -46,101 +50,127 @@ $border: 1px solid #dce0e0;
 $prefixes: webkit moz ms o;
 //
 .flexitem-1 {
-	flex-grow: 1;
-	flex-shrink: 0;
-	flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
 }
 
 .flexitem-2 {
-	flex-grow: 2;
+    flex-grow: 2;
 }
 
 .flexitem-3 {
-	flex-grow: 3;
+    flex-grow: 3;
 }
 
 .item-margin {
-	margin: $spacing-small;
+    margin: $spacing-small;
 }
 
 //
 //Media
 //
 @mixin mediaRemoveMargin($at) {
-	@media only screen and (max-width: $at) {
-		margin: 0;
-		width: 100%;
-		min-width: 100vw;
-		max-width: 100vw;
-		padding: $spacing-small * 2.5;
-		border: none;
-	}
+    @media only screen and (max-width: $at) {
+        margin: 0;
+        width: 100%;
+        min-width: 100vw;
+        max-width: 100vw;
+        padding: $spacing-small * 2.5;
+        border: none;
+    }
 }
 
 @mixin mediaRemoveDisplay($at) {
-	@media only screen and (max-width: $at) {
-		display: none;
-	}
+    @media only screen and (max-width: $at) {
+        display: none;
+    }
 }
 
 @mixin mediaShow($at) {
-	@media only screen and (min-width: $at) {
-		display: none;
-	}
-	@media only screen and (max-width: $at) {
-		display: inline-block;
-	}
+    @media only screen and (min-width: $at) {
+        display: none;
+    }
+    @media only screen and (max-width: $at) {
+        display: inline-block;
+    }
 }
 
 $change-amount: 2;
 @mixin actionsColors($color) {
-	&:hover {
-		background-color: lighten($color, $change-amount);
-	}
-	&:active {
-		background-color: darken($color, $change-amount);
-	}
+    &:hover {
+        background-color: lighten($color, $change-amount);
+    }
+    &:active {
+        background-color: darken($color, $change-amount);
+    }
 }
 
 @mixin prefix($declarations) {
-	@each $property, $value in $declarations {
-		@each $prefix in $prefixes {
-			#{'-' + $prefix + '-' + $property}: $value;
-		}
-		#{$property}: $value;
-	}
+    @each $property,
+    $value in $declarations {
+        @each $prefix in $prefixes {
+            #{'-' + $prefix + '-' + $property}: $value;
+        }
+        #{$property}: $value;
+    }
 }
 
 .large {
-	padding: 25px 11px 25px 11px;
+    padding: 25px 11px 25px 11px;
 }
 
 .small {
-	padding: 12px 11px 12px 11px;
+    padding: 12px 11px 12px 11px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.error {
+    border: solid rgb(250, 90, 95) 1px;
+}
+
+.inform {
+    margin-bottom: $spacing-small;
+}
+
+.facebook {
+    background-color: $color-facebook-blue; //@include actionsColors($color-facebook-blue);
+    color: rgb(72, 72, 72);
+    border: 2px solid rgb(72, 72, 72);
+}
+
+.google {
+    background-color: $color-google-red; //@include actionsColors($color-google-red);
+    color: rgb(72, 72, 72);
+    border: 2px solid rgb(72, 72, 72);
 }
 
 span.inpt-error-text {
-	display: inline-block;
-	color: rgb(255, 90, 95);
-	margin-bottom: $spacing-small;
+    display: inline-block;
+    color: rgb(255, 90, 95);
+    margin-bottom: $spacing-small;
 }
 
 a {
-	color: $patina;
-	text-decoration: none;
-	&:visited {
-		color: $patina;
-		text-decoration: none;
-	}
-	&:hover {
-		text-decoration: underline;
-	}
+    color: $patina;
+    text-decoration: none;
+    &:visited {
+        color: $patina;
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #root {
-	font-family: $font; // font-style: $font-style;
+    font-family: $font; // font-style: $font-style;
+    color: #484848;
 }

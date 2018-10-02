@@ -23,8 +23,8 @@ export const Navbar = ({ children, logo, menu }) => (
     </nav>
 )
 
-export const Navitem = ({ children, label }) => (
-    <div className="navitem">
+export const Navitem = ({ children, label, ...props }) => (
+    <div className="navitem" {...props}>
         {label}
         {children && <div className="navitem-menu">{children}</div>}
     </div>
