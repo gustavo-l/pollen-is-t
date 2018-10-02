@@ -30,7 +30,7 @@
 	}
 	.logo {
 		margin-right: auto;
-		margin-left: $spacing-small;
+		//margin-left: 20px; //$spacing-small;
 		cursor: pointer;
 		@include prefix(
 			(
