@@ -1,0 +1,25 @@
+@import '../app.styles.scss';
+.user-container {
+    margin: $spacing-small * 2.5;
+    .container-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: $spacing-small * 2.5;
+    }
+    .search-user {
+        margin: $spacing-small * 2;
+    }
+    .headline-user {
+        margin: $spacing-small * 2.5;
+    }
+    .action-button:nth-child(2) {
+        margin-left: $spacing-small * 2;
+        margin-right: $spacing-small * 2;
+    }
+    .action-button:nth-child(1) {
+        margin-right: $spacing-small * 2;
+    }
+    .action-button:nth-child(3) {
+        margin-left: $spacing-small * 2;
+    }
+}

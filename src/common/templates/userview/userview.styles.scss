@@ -8,21 +8,21 @@
     display: flex;
     justify-content: space-evenly;
     border: $border;
-    margin: $spacing-small * 2.5;
+    margin: $spacing-small * 1.5 $spacing-small * 2.5 $spacing-small * 1.5 $spacing-small * 2.5;
     padding: $spacing-small;
     text-align: center;
     .userview-data {
+        @include autoMargin();
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        @include autoMargin();
     }
     .userview-avatar {
+        @include autoMargin();
         margin-left: auto;
         margin-right: auto;
         text-align: left;
         flex-grow: 3;
-        @include autoMargin();
         img {
             display: inline-block;
             width: auto;
@@ -37,12 +37,13 @@
         }
     }
     .userview-active {
-        color: limegreen;
         @include autoMargin();
         @include mediaRemoveDisplay($tablet-large);
+        color: limegreen;
     }
     .userview-inactive {
         @include autoMargin();
+        @include mediaRemoveDisplay($tablet-large);
         color: $color-primary
     }
 }

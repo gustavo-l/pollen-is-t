@@ -13,10 +13,12 @@ export const Button = ({
     google,
     large,
     small,
+    className,
     ...props
 }) => (
     <button
         className={classNames(
+            className,
             'btn',
             fullwidth ? 'fullwidth' : '',
             facebook ? 'facebook' : '',

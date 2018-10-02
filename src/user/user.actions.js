@@ -6,9 +6,10 @@ import {
 } from '../common/util/redux/redux.helper'
 
 export const LOAD_USERS_ASYNC = createAsyncTypes('@@users/LOAD_USERS')
-const CREATE_USERS_ASYNC = createAsyncTypes('@@/user/CREATE_USER')
-const UPDATE_USERS_ASYNC = createAsyncTypes('@@/user/UPDATE_USERS')
-const DELETE_USERS_ASYNC = createAsyncTypes('@@/user/DELETE_USERS')
+export const CREATE_USERS_ASYNC = createAsyncTypes('@@user/CREATE_USER')
+export const UPDATE_USERS_ASYNC = createAsyncTypes('@@user/UPDATE_USERS')
+export const DELETE_USERS_ASYNC = createAsyncTypes('@@user/DELETE_USERS')
+export const SET_SELECTED_USER = '@@user/SET_SELECTED'
 
 const loadUsersSuccess = data =>
     createAction(LOAD_USERS_ASYNC.SUCCESS, { data })
@@ -24,6 +25,8 @@ const updateUserSuccess = data =>
     createAction(UPDATE_USERS_ASYNC.SUCCESS, { data })
 const updateUserRequest = () => createAction(UPDATE_USERS_ASYNC.REQUEST)
 const updateUserFail = () => createAction(UPDATE_USERS_ASYNC.FAIL)
+
+export const setSelectedUser = data => createAction(SET_SELECTED_USER, { data })
 
 export const loadUsers = ({ size, page }) => dispatch =>
     new Promise(async resolve => {
