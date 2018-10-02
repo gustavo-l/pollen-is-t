@@ -13,7 +13,6 @@
     cursor: pointer; //dsad
     //
     //
-    @include actionsColors($color-primary);
     &:disabled {
         background-color: $dark-wood;
     }

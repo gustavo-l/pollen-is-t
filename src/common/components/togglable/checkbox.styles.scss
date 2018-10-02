@@ -49,11 +49,11 @@
 }
 
 .container .checkmark:after {
-    left: 5px;
-    top: 1px;
+    left: 0px;
+    top: 0px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: 1px solid white;
     border-width: 0 3px 3px 0;
     @include prefix( ( transform: rotate(45deg)));
 }

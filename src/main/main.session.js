@@ -36,3 +36,4 @@ export const logout = dispatch => {
     dispatch(push('/login'))
     dispatch({ type: '@@session/TOKEN_CLEAR' })
 }
+export const redirect = (to, dispatch) => dispatch(push(to))

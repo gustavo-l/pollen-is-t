@@ -9,9 +9,9 @@ import {
     Navitem,
     NavitemDropdown
 } from '../common/components/navbar/navbar.component'
-import { logout } from '../main/main.session'
+import { logout, redirect } from '../main/main.session'
 
-let Main = ({ isAuth, logout }) => (
+let Main = ({ isAuth, logout, redirect }) => (
     <div>
         {isAuth ? (
             <Navbar
@@ -23,7 +23,7 @@ let Main = ({ isAuth, logout }) => (
                 <Navitem label="Loja Admin" />
                 <Navitem label="Loja Comerciante" />
                 <Navitem label="Cliente" />
-                <Navitem label="Sair" role="button" onClick={logout} />
+                <Navitem label="Sair" onClick={logout} />
             </Navbar>
         ) : (
             <Navbar
@@ -32,8 +32,8 @@ let Main = ({ isAuth, logout }) => (
             >
                 <Navitem label="Seja um florista" />
                 <Navitem label="Ajuda" />
-                <Navitem label="Cadastre-se" />
-                <Navitem label="Entrar" />
+                <Navitem label="Cadastre-se" onClick={redirect('/signup')} />
+                <Navitem label="Entrar" onClick={redirect('/login')} />
             </Navbar>
         )}
         <div>
@@ -45,7 +45,8 @@ const mapStateToProps = state => ({
     isAuth: isAuthSelector(state)
 })
 const mapDispatchToProps = dispatch => ({
-    logout: () => logout(dispatch)
+    logout: () => logout(dispatch),
+    redirect: to => () => redirect(to, dispatch)
 })
 Main = connect(
     mapStateToProps,
