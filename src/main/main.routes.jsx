@@ -6,7 +6,7 @@ import { httpClient } from '../common/util/http/common.http'
 import { store } from './main.store'
 import { tokenSelector } from './main.session'
 
-const Loading = ({ isLoading, error }) => {
+export const Loading = ({ isLoading, error }) => {
     // Handle the loading state
     if (isLoading) {
         return (

@@ -48,7 +48,7 @@ export const loadProducts = ({ size, page }) => dispatch =>
         try {
             dispatch(loadProductRequest())
             const response = await httpClient.get({
-                url: `/products/${size}/${page}`,
+                url: `/product/${size}/${page}`,
                 token: localStorage.getItem('token')
             })
             dispatch(loadProductsSuccess(response.data))
@@ -63,7 +63,7 @@ export const createProduct = ({ ...rest }) => dispatch =>
         try {
             dispatch(createProductRequest())
             const response = await httpClient.post({
-                url: `/products`,
+                url: `/product`,
                 data: { ...rest },
                 token: localStorage.getItem('token')
             })
@@ -79,7 +79,7 @@ export const updateProduct = _id => dispatch =>
         try {
             dispatch(updateProductRequest())
             const response = await httpClient.get({
-                url: `/products/${_id}`,
+                url: `/product/${_id}`,
                 token: localStorage.getItem('token')
             })
             dispatch(updateProductsSuccess(response.data))
@@ -94,7 +94,7 @@ export const deleteProduct = _id => dispatch =>
         try {
             dispatch(deleteProductRequest())
             const response = await httpClient.delete({
-                url: `/products/${_id}`,
+                url: `/product/${_id}`,
                 token: localStorage.getItem('token')
             })
             dispatch(deleteProductsSuccess(response.data))

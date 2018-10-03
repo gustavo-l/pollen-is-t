@@ -58,7 +58,7 @@ export const UserView = ({
                 fullwidth
                 onClick={({ target: { name } }) => onDisable(name)}
             >
-                Desativar
+                {active ? 'Desativar' : 'Ativar'}
             </Button>
         </div>
     </div>

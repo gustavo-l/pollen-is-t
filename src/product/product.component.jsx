@@ -11,27 +11,36 @@ import {
 } from './product.actions'
 import { productSelector } from './product.reducer'
 
-let Product = props => (
-    <div>
-        <h2>Seus produtos</h2>
-        <Card
-            heading="hello"
-            description="world"
-            title="title"
-            avatar="https://via.placeholder.com/300x300"
-        >
-            <strong>Hello World</strong>
-        </Card>
-        <Card
-            heading="hello"
-            description="world"
-            title="title"
-            avatar="https://via.placeholder.com/300x300"
-        >
-            <strong>Hello World</strong>
-        </Card>
-    </div>
-)
+class Product extends React.PureComponent {
+    async componentDidMount() {
+        this.props.loadProducts({ size: 10, page: 0 })
+    }
+    render() {
+        return (
+            <div>
+                <h2>Seus produtos</h2>
+                {console.log(this.props.products)}
+                {this.props.products.map((data, index) => (
+                    <Card
+                        key={index}
+                        heading={data.code}
+                        description={data.description}
+                        title={data.name}
+                        avatar="https://via.placeholder.com/300x300"
+                    >
+                        {data.prices.map((price, index) => (
+                            <div key={index}>
+                                <b>{`R$ ${price.value}, Tamano ${
+                                    price.size
+                                }\n`}</b>
+                            </div>
+                        ))}
+                    </Card>
+                ))}
+            </div>
+        )
+    }
+}
 
 const mapStateToProps = state => ({
     products: productSelector(state)
@@ -43,8 +52,9 @@ const mapDispatchToProps = dispatch => ({
     updateProduct: _id => updateProduct(dispatch),
     deleteProduct: _id => deleteProduct(_id)(dispatch)
 })
-Product = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Product)
-export default withRouter(Product)
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Product)
+)

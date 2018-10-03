@@ -8,56 +8,65 @@ import { UserView } from '../common/templates/userview/userview.component'
 import './user.styles.scss'
 import { Input } from '../common/components/input/input.component'
 
+import Loadable from 'react-loadable'
+import { Loading } from '../main/main.routes'
+
+const UserCreate = Loadable({
+    loader: () => import('./user.create'),
+    loading: Loading
+})
+
 let UserForm = ({ pending }) => (
-	<div>
-		<div className="headline-user">
-			<h2 className="headline">Gerencie seus usuários</h2>
-			<Button className="action-button" fullwidth disabled={pending}>
-				Incluir
-			</Button>
-		</div>
-		<div className="search-user">
-			<Input fullwidth placeholder="Pesquisar" />
-		</div>
-	</div>
+    <div>
+        <div className="headline-user">
+            <h2 className="headline">Gerencie seus usuários</h2>
+            <Button className="action-button" fullwidth disabled={pending}>
+                Incluir
+            </Button>
+        </div>
+        <div className="search-user">
+            <Input fullwidth placeholder="Pesquisar" />
+        </div>
+    </div>
 )
 
 class User extends React.PureComponent {
-	async componentDidMount() {
-		this.props.loadUsers({ size: 20, page: 0 })
-	}
-	render() {
-		const { users, pending, disableUser } = this.props
-		return (
-			<div className="user-container">
-				<UserForm pending={pending} />
-				{users.map((data, index) => (
-					<UserView
-						key={index}
-						avatar="https://via.placeholder.com/50x50"
-						active={data.confirmed}
-						data={data}
-						onDisable={disableUser}
-					/>
-				))}
-			</div>
-		)
-	}
+    async componentDidMount() {
+        this.props.loadUsers({ size: 20, page: 0 })
+    }
+    render() {
+        const { users, pending, disableUser } = this.props
+        return (
+            <div className="user-container">
+                <UserForm pending={pending} />
+                {users.map((data, index) => (
+                    <UserView
+                        key={index}
+                        avatar="https://via.placeholder.com/50x50"
+                        active={data.state}
+                        data={data}
+                        onDisable={disableUser}
+                    />
+                ))}
+                <UserCreate />
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
-	users: state.users.fetchedUsers,
-	pending: state.users.pending
+    users: state.users.fetchedUsers,
+    pending: state.users.pending
 })
 
 const mapDispatchToProps = dispatch => ({
-	loadUsers: ({ size, page }) => loadUsers({ size, page })(dispatch),
-	disableUser: _id => disableUser(_id)(dispatch)
+    loadUsers: ({ size, page }) => loadUsers({ size, page })(dispatch),
+    disableUser: _id => disableUser(_id)(dispatch)
 })
 
 export default withRouter(
-	connect(
-		mapStateToProps,
-		mapDispatchToProps
-	)(User)
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(User)
 )

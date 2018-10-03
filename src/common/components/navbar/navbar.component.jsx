@@ -22,7 +22,6 @@ export const Navbar = ({ children, logo, menu }) => (
         <img src={menu} alt="Menu" className="menu" draggable={false} />
     </nav>
 )
-
 export const Navitem = ({ children, label, ...props }) => (
     <div className="navitem" {...props}>
         {label}

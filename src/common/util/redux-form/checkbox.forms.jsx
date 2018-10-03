@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckBox } from '../../components/input/input.component'
+import { CheckBox } from '../../components/togglable/checkbox.component'
 
 /**
  *
