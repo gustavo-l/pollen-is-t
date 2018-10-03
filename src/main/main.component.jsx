@@ -20,11 +20,8 @@ let Main = ({ isAuth, logout, redirect }) => (
 				logo="../../public/img/Pollen.svg"
 				menu="../../public/img/Menu.svg"
 			>
-				<Navitem label="Configurações" />
-				<Navitem label="Ajuda" />
-				<Navitem label="Loja Admin" />
-				<Navitem label="Loja Comerciante" />
-				<Navitem label="Cliente" />
+				<Navitem label="Usuarios" onClick={redirect('/user')} />
+				<Navitem label="Produtos" onClick={redirect('/product')} />
 				<Navitem label="Sair" onClick={logout} />
 			</Navbar>
 		) : (
@@ -53,8 +50,10 @@ const mapDispatchToProps = dispatch => ({
 	logout: () => logout(dispatch),
 	redirect: to => () => redirect(to, dispatch)
 })
+
 Main = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(Main)
+
 export default withRouter(Main)

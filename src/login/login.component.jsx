@@ -78,6 +78,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) => (
  * ??validate: Função de validação
  * @see {@link https://redux-form.com/7.4.2/docs/api/reduxform.md/}
  */
+
 export default withRouter(
     reduxForm({
         form: 'login',

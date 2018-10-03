@@ -1,7 +1,6 @@
 import { httpClient } from '../common/util/http/common.http'
 import {
     createAction,
-    createReducer,
     createAsyncTypes
 } from '../common/util/redux/redux.helper'
 
@@ -9,10 +8,13 @@ export const LOAD_USERS_ASYNC = createAsyncTypes('@@users/LOAD_USERS')
 export const CREATE_USERS_ASYNC = createAsyncTypes('@@user/CREATE_USER')
 export const UPDATE_USERS_ASYNC = createAsyncTypes('@@user/UPDATE_USERS')
 export const DELETE_USERS_ASYNC = createAsyncTypes('@@user/DELETE_USERS')
+export const DISABLE_USERS_ASYNC = createAsyncTypes('@@user/DISABLE_USERS')
 export const SET_SELECTED_USER = '@@user/SET_SELECTED'
 
 const loadUsersSuccess = data =>
-    createAction(LOAD_USERS_ASYNC.SUCCESS, { data })
+    createAction(LOAD_USERS_ASYNC.SUCCESS, {
+        data
+    }) /** ({type: '@@users/CREATE_USER_REQUEST}, payload: {data}) */
 const loadUserRequest = () => createAction(LOAD_USERS_ASYNC.REQUEST)
 const loadUserFail = () => createAction(LOAD_USERS_ASYNC.FAIL)
 
@@ -28,6 +30,11 @@ const updateUserFail = () => createAction(UPDATE_USERS_ASYNC.FAIL)
 
 export const setSelectedUser = data => createAction(SET_SELECTED_USER, { data })
 
+const disableUserSuccess = data =>
+    createAction(DISABLE_USERS_ASYNC.SUCCESS, { data })
+const disableUserRequest = () => createAction(DISABLE_USERS_ASYNC.REQUEST)
+const disableUserFail = () => createAction(DISABLE_USERS_ASYNC.FAIL)
+
 export const loadUsers = ({ size, page }) => dispatch =>
     new Promise(async resolve => {
         try {
@@ -36,7 +43,6 @@ export const loadUsers = ({ size, page }) => dispatch =>
                 url: `/user/${size}/${page}`,
                 token: localStorage.getItem('token')
             })
-            console.log(response.data)
             dispatch(loadUsersSuccess(response.data))
             resolve(true)
         } catch (err) {
@@ -61,6 +67,7 @@ export const createUser = ({ ...rest }) => dispatch =>
             dispatch(createUserFail())
         }
     })
+
 export const updateUser = ({ _id, ...rest }) => dispatch =>
     new Promise(async resolve => {
         try {
@@ -75,5 +82,21 @@ export const updateUser = ({ _id, ...rest }) => dispatch =>
         } catch (err) {
             resolve(false)
             dispatch(updateUserFail())
+        }
+    })
+
+export const disableUser = _id => dispatch =>
+    new Promise(async resolve => {
+        try {
+            dispatch(disableUserRequest())
+            const response = await httpClient.patch({
+                url: `/user/${_id}`,
+                token: localStorage.getItem('token')
+            })
+            dispatch(disableUserSuccess(response.data))
+            resolve(true)
+        } catch (err) {
+            resolve(false)
+            dispatch(disableUserFail())
         }
     })
