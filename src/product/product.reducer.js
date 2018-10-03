@@ -1,12 +1,17 @@
 // import _ from 'lodash'
 
-import { LOAD_PRODUCT_ASYNC } from './product.actions'
+import {
+    LOAD_PRODUCT_ASYNC,
+    CREATE_PRODUCT_ASYNC,
+    UPDATE_PRODUCT_ASYNC,
+    DELETE_PRODUCT_ASYNC
+} from './product.actions'
 const initialState = {
     fetchedProducts: [],
     pending: false
 }
 
-export const users = (state = initialState, action) => {
+export const product = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_PRODUCT_ASYNC.SUCCESS: {
             return {
@@ -30,8 +35,17 @@ export const users = (state = initialState, action) => {
                 pending: true
             }
         }
-
+        case CREATE_PRODUCT_ASYNC.SUCCESS:
+        case UPDATE_PRODUCT_ASYNC.SUCCESS:
+        case DELETE_PRODUCT_ASYNC.SUCCESS: {
+            return {
+                ...state,
+                pending: false
+            }
+        }
         default:
             return state
     }
 }
+
+export const productSelector = state => state.product.fetchedProducts

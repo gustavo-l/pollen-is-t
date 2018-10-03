@@ -78,6 +78,19 @@ class HttpClient {
             }
         })
     }
+    delete({ url, token }) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve(
+                    await this.instance.delete(url, {
+                        headers: this.setHeaders(token)
+                    })
+                )
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
     put({ url, data, token }) {
         return new Promise(async (resolve, reject) => {
             try {

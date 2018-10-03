@@ -1,7 +1,17 @@
 import React from 'react'
-import { Card } from '../common/components/card/card.component'
+import { withRouter } from 'react-router'
 
-const Product = props => (
+import { Card } from '../common/components/card/card.component'
+import { connect } from 'react-redux'
+import {
+    loadProducts,
+    updateProduct,
+    createProduct,
+    deleteProduct
+} from './product.actions'
+import { productSelector } from './product.reducer'
+
+let Product = props => (
     <div>
         <h2>Seus produtos</h2>
         <Card
@@ -22,4 +32,19 @@ const Product = props => (
         </Card>
     </div>
 )
-export default Product
+
+const mapStateToProps = state => ({
+    products: productSelector(state)
+})
+
+const mapDispatchToProps = dispatch => ({
+    loadProducts: ({ size, page }) => loadProducts({ size, page })(dispatch),
+    createProduct: ({ ...rest }) => createProduct({ ...rest })(dispatch),
+    updateProduct: _id => updateProduct(dispatch),
+    deleteProduct: _id => deleteProduct(_id)(dispatch)
+})
+Product = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Product)
+export default withRouter(Product)
