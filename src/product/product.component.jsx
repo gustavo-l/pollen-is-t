@@ -1,8 +1,17 @@
 import React from 'react'
 import { Card } from '../common/components/card/card.component'
 
-export const Product = props => (
+const Product = props => (
     <div>
+        <h2>Seus produtos</h2>
+        <Card
+            heading="hello"
+            description="world"
+            title="title"
+            avatar="https://via.placeholder.com/300x300"
+        >
+            <strong>Hello World</strong>
+        </Card>
         <Card
             heading="hello"
             description="world"
@@ -13,3 +22,4 @@ export const Product = props => (
         </Card>
     </div>
 )
+export default Product

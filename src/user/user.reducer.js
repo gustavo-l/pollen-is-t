@@ -26,7 +26,6 @@ export const users = (state = initialState, action) => {
             return {
                 ...state,
                 fetchedUsers: [],
-                selectedUsers: [],
                 pending: false
             }
         }
@@ -34,7 +33,6 @@ export const users = (state = initialState, action) => {
             return {
                 ...state,
                 fetchedUsers: [],
-                selectedUsers: [],
                 pending: true
             }
         }
