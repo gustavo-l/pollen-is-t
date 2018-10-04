@@ -82,6 +82,7 @@ let ProductCreate = ({ submitting, handleSubmit }) => (
                 type="number"
                 component={RenderInput}
             />
+
             <Field name="code" label="Código" component={RenderInput} />
             <Button type="submit" small disabled={submitting} fullwidth inform>
                 Cadastrar Produto

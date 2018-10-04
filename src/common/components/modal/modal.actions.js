@@ -1,30 +1,11 @@
-import {
-	createAction,
-	createReducer,
-	createAsyncTypes
-} from '../../util/redux/redux.helper'
+import { createAction } from '../../util/redux/redux.helper'
 
-export const OPEN_MODAL = createAsyncTypes('@@modal/OPEN_MODAL')
+export const OPEN_MODAL = '@@modal/OPEN_MODAL'
+export const CLOSE_MODAL = '@@modal/CLOSE_MODAL'
 
-const openModalSuccess = data => createAction(OPEN_MODAL.SUCCESS)
-const openModalRequest = data => createAction(OPEN_MODAL.REQUEST)
-const openModalFail = () => createAction(OPEN_MODAL.FAIL)
+const openModalRequest = () => createAction(OPEN_MODAL)
+const closeModalRequest = () => createAction(CLOSE_MODAL)
 
-export const openModal = () => dispatch => {
-	console.log('CHEGOU AQUI')
-	dispatch(openModalRequest())
-}
-
-/*
-openModal() {
-    this.setState({ modalIsOpen: true })
-}
-
-afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00'
-}
-
-closeModal() {
-    this.setState({ modalIsOpen: false })
-}*/
+//Não estamos usando thunk
+export const openModal = dispatch => dispatch(openModalRequest())
+export const closeModal = dispatch => dispatch(closeModalRequest())

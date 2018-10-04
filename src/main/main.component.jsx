@@ -6,14 +6,12 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { Navbar, Navitem } from '../common/components/navbar/navbar.component'
 import { logout, redirect } from '../main/main.session'
+import { show } from 'redux-modal'
 // import ModalCustom from '../common/components/modal/modal.component'
 
-const ModalCustom = Loadable({
-    loader: () => import('../common/components/modal/modal.component'),
-    loading: Loading
-})
+import Modal from '../common/components/modal/modal.component'
 
-let Main = ({ isAuth, logout, redirect }) => (
+let Main = ({ isAuth, logout, redirect, handleOpen }) => (
     <div>
         {isAuth ? (
             <Navbar
@@ -36,7 +34,12 @@ let Main = ({ isAuth, logout, redirect }) => (
             </Navbar>
         )}
         <div>
-            <ModalCustom />
+            <button onClick={handleOpen('mymodal')}> HELLO </button>
+            <Modal name="mymodal">
+                <div>
+                    <h1>HELLO</h1>
+                </div>
+            </Modal>
         </div>
         <div>
             <Routes />
@@ -48,7 +51,8 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
     logout: () => logout(dispatch),
-    redirect: to => () => redirect(to, dispatch)
+    redirect: to => () => redirect(to, dispatch),
+    handleOpen: name => () => dispatch(show(name))
 })
 
 Main = connect(
