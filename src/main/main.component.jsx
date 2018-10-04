@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { Navbar, Navitem } from '../common/components/navbar/navbar.component'
 import { logout, redirect } from '../main/main.session'
+// import ModalCustom from '../common/components/modal/modal.component'
 
 const ModalCustom = Loadable({
     loader: () => import('../common/components/modal/modal.component'),

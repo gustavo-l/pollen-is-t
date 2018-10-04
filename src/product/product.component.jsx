@@ -10,6 +10,9 @@ import {
     deleteProduct
 } from './product.actions'
 import { productSelector } from './product.reducer'
+import ProductCreate from './product.create'
+
+import './product.styles.scss'
 
 class Product extends React.PureComponent {
     async componentDidMount() {
@@ -20,23 +23,29 @@ class Product extends React.PureComponent {
             <div>
                 <h2>Seus produtos</h2>
                 {console.log(this.props.products)}
-                {this.props.products.map((data, index) => (
-                    <Card
-                        key={index}
-                        heading={data.code}
-                        description={data.description}
-                        title={data.name}
-                        avatar="https://via.placeholder.com/300x300"
-                    >
-                        {data.prices.map((price, index) => (
-                            <div key={index}>
-                                <b>{`R$ ${price.value}, Tamano ${
-                                    price.size
-                                }\n`}</b>
-                            </div>
-                        ))}
-                    </Card>
-                ))}
+                <div className="product-container">
+                    {this.props.products.map((data, index) => (
+                        <div key={index} className="product-item">
+                            <Card
+                                heading={data.code}
+                                description={data.description}
+                                title={data.name}
+                                avatar="https://via.placeholder.com/300x300"
+                            >
+                                {data.prices.map((price, index) => (
+                                    <div key={index}>
+                                        <b>{`R$ ${price.value}, Tamano ${
+                                            price.size
+                                        }\n`}</b>
+                                    </div>
+                                ))}
+                            </Card>
+                        </div>
+                    ))}
+                </div>
+                <div className="panel">
+                    <ProductCreate />
+                </div>
             </div>
         )
     }
