@@ -10,11 +10,15 @@ import {
 } from './product.actions'
 import { productSelector } from './product.reducer'
 import ProductCreate from './product.create'
+import ProductUpdate from './product.update'
 import Modal from '../common/components/modal/modal.component'
 import './product.styles.scss'
 import ProductSearchForm from './product.searchform'
 import Loadable from 'react-loadable'
 import { Loading } from '../main/main.loading'
+import { show } from 'redux-modal'
+
+import _ from 'lodash'
 
 const ProductView = Loadable({
     loader: () =>
@@ -26,16 +30,31 @@ class Product extends React.PureComponent {
         this.props.loadProducts({ size: 10, page: 0 })
     }
     render() {
+        const { handleOpen, products } = this.props
         return (
             <div>
                 <ProductSearchForm pending={this.props.pending} />
                 <div className="product-container">
-                    {this.props.products.map((data, index) => (
-                        <ProductView data={data} key={index} />
+                    {products.map((data, index) => (
+                        <ProductView
+                            data={data}
+                            key={index}
+                            onUpdate={_id =>
+                                handleOpen('productUpdate', {
+                                    initial: _.filter(
+                                        products,
+                                        o => o._id === _id
+                                    )[0]
+                                })
+                            }
+                        />
                     ))}
                 </div>
                 <Modal name="productCreate">
                     <ProductCreate />
+                </Modal>
+                <Modal name="productUpdate">
+                    <ProductUpdate />
                 </Modal>
             </div>
         )
@@ -51,7 +70,9 @@ const mapDispatchToProps = dispatch => ({
     loadProducts: ({ size, page }) => loadProducts({ size, page })(dispatch),
     createProduct: ({ ...rest }) => createProduct({ ...rest })(dispatch),
     updateProduct: _id => updateProduct(dispatch),
-    deleteProduct: _id => deleteProduct(_id)(dispatch)
+    deleteProduct: _id => deleteProduct(_id)(dispatch),
+
+    handleOpen: (name, props) => dispatch(show(name, props))
 })
 export default withRouter(
     connect(

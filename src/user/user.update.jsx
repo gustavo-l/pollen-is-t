@@ -9,19 +9,16 @@ import { connect } from 'react-redux'
 async function updateUser(data) {
     try {
         const { user, firstname, lastname, password, email, state } = data
-        const response = await httpClient.post({
-            url: '/user',
+        console.log(data._id)
+        const response = await httpClient.put({
+            url: `/user/${data._id}`,
             data: {
                 user,
                 firstname,
                 lastname,
-                password,
-                email,
-                register: null,
-                confirmed: state,
                 state: !!state
             },
-            token: null
+            token: localStorage.getItem('token')
         })
         console.log(response.data)
     } catch (err) {
@@ -51,15 +48,10 @@ export const validate = values => {
     return errors
 }
 
-let UserCreate = ({ initial, submitting, handleSubmit, ...props }) => (
+let UserUpdate = ({ initial, submitting, handleSubmit, ...props }) => (
     <div className="panel">
         {console.log(props)}
         <form onSubmit={handleSubmit(updateUser)}>
-            <Field
-                name="email"
-                label="Endereço de email"
-                component={RenderInput}
-            />
             <Field
                 name="firstname"
                 label="Primeiro nome"
@@ -71,12 +63,7 @@ let UserCreate = ({ initial, submitting, handleSubmit, ...props }) => (
                 component={RenderInput}
             />
             <Field name="user" label="Usuário" component={RenderInput} />
-            <Field
-                name="password"
-                label="Criar uma senha"
-                type="password"
-                component={RenderInput}
-            />
+
             <Field name="state" label="Ativo?" component={RenderCheckBox} />
             <Button type="submit" small disabled={submitting} fullwidth inform>
                 Atualizar Usuario
@@ -84,17 +71,17 @@ let UserCreate = ({ initial, submitting, handleSubmit, ...props }) => (
         </form>
     </div>
 )
-UserCreate = reduxForm({
+UserUpdate = reduxForm({
     form: 'userUpdate',
     validate,
     enableReinitialize: true
-})(UserCreate)
+})(UserUpdate)
 
-UserCreate = connect(state => ({
+UserUpdate = connect(state => ({
     initialValues:
         typeof state.modal.userUpdate !== 'undefined'
             ? state.modal.userUpdate.props.initial
             : ''
-}))(UserCreate)
+}))(UserUpdate)
 
-export default withRouter(UserCreate)
+export default withRouter(UserUpdate)

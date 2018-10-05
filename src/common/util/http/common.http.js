@@ -2,6 +2,10 @@ import axios from 'axios'
 import { Agent as HttpAgent } from 'http'
 import { Agent as HttpsAgent } from 'https'
 
+Promise.all([import('axios'), import('http'), import('https')]).then(
+    (axios, HttpAgent, HttpsAgent) => {}
+)
+
 /**
  *
  *

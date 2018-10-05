@@ -9,8 +9,6 @@ import { logout, redirect } from '../main/main.session'
 import { show } from 'redux-modal'
 // import ModalCustom from '../common/components/modal/modal.component'
 
-import Modal from '../common/components/modal/modal.component'
-
 let Main = ({ isAuth, logout, redirect, handleOpen }) => (
     <div>
         {isAuth ? (
