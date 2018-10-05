@@ -11,7 +11,15 @@ import { Input } from '../../components/input/input.component'
  *
  * ?Input: Componente próprio da pollen, a caixa de texto
  */
-export const RenderInput = ({ input, label, type, small, large, meta }) => (
+export const RenderInput = ({
+    input,
+    label,
+    type,
+    small,
+    large,
+    meta,
+    defaultValue
+}) => (
     <div>
         <Input
             {...input}

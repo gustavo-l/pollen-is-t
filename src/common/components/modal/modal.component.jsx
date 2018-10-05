@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Modal from 'react-modal'
 import { connectModal } from 'redux-modal'
+import Loadable from 'react-loadable'
+import { Loading } from '../../../main/main.routes'
+
+import Modal from 'react-modal'
 
 const customStyles = {
     content: {
@@ -15,8 +18,7 @@ const customStyles = {
 }
 
 Modal.setAppElement('#root')
-
-const ModalCustom = ({ Component, handleHide, show, children }) => (
+const ModalCustom = ({ handleHide, show, children, ...rest }) => (
     <div>
         <Modal
             isOpen={show}
@@ -24,15 +26,16 @@ const ModalCustom = ({ Component, handleHide, show, children }) => (
             style={customStyles}
             contentLabel="Example Modal"
         >
-            {children}
+            {React.cloneElement(children, { ...rest })}
         </Modal>
     </div>
 )
 
 export default class WrappedModal extends React.PureComponent {
     render() {
-        const { name, children } = this.props
+        const { name, children, ...rest } = this.props
+        const childrenWithProps = React.cloneElement(children, { ...rest })
         const Wrap = connectModal({ name })(ModalCustom)
-        return <Wrap>{children}</Wrap>
+        return <Wrap>{childrenWithProps}</Wrap>
     }
 }

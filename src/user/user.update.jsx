@@ -5,7 +5,7 @@ import { RenderInput } from '../common/util/redux-form/input.forms'
 import { RenderCheckBox } from '../common/util/redux-form/checkbox.forms'
 import { Button } from '../common/components/button/button.component'
 import { httpClient } from '../common/util/http/common.http'
-
+import { connect } from 'react-redux'
 async function updateUser(data) {
     try {
         const { user, firstname, lastname, password, email, state } = data
@@ -51,25 +51,23 @@ export const validate = values => {
     return errors
 }
 
-const UserCreate = ({ initial, submitting, handleSubmit }) => (
+let UserCreate = ({ initial, submitting, handleSubmit, ...props }) => (
     <div className="panel">
+        {console.log(props)}
         <form onSubmit={handleSubmit(updateUser)}>
             <Field
                 name="email"
                 label="Endereço de email"
-                defaultValue={initial.email}
                 component={RenderInput}
             />
             <Field
                 name="firstname"
                 label="Primeiro nome"
-                defaultValue={initial.firstname}
                 component={RenderInput}
             />
             <Field
                 name="lastname"
                 label="Último nome"
-                defaultValue={initial.lastname}
                 component={RenderInput}
             />
             <Field name="user" label="Usuário" component={RenderInput} />
@@ -77,25 +75,26 @@ const UserCreate = ({ initial, submitting, handleSubmit }) => (
                 name="password"
                 label="Criar uma senha"
                 type="password"
-                defaultValue={initial.password}
                 component={RenderInput}
             />
-            <Field
-                name="state"
-                label="Ativo?"
-                defaultValue={initial.state}
-                component={RenderCheckBox}
-            />
+            <Field name="state" label="Ativo?" component={RenderCheckBox} />
             <Button type="submit" small disabled={submitting} fullwidth inform>
                 Atualizar Usuario
             </Button>
         </form>
     </div>
 )
+UserCreate = reduxForm({
+    form: 'userUpdate',
+    validate,
+    enableReinitialize: true
+})(UserCreate)
 
-export default withRouter(
-    reduxForm({
-        form: 'userUpdate',
-        validate
-    })(UserCreate)
-)
+UserCreate = connect(state => ({
+    initialValues:
+        typeof state.modal.userUpdate !== 'undefined'
+            ? state.modal.userUpdate.props.initial
+            : ''
+}))(UserCreate)
+
+export default withRouter(UserCreate)

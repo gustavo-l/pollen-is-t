@@ -5,8 +5,8 @@ import { RenderInput } from '../common/util/redux-form/input.forms'
 import { RenderCheckBox } from '../common/util/redux-form/checkbox.forms'
 import { Button } from '../common/components/button/button.component'
 import { httpClient } from '../common/util/http/common.http'
-
-async function createUser(data) {
+import { hide } from 'redux-modal'
+async function createUser(data, dispatch) {
     try {
         const { user, firstname, lastname, password, email, state } = data
         const response = await httpClient.post({
@@ -24,6 +24,7 @@ async function createUser(data) {
             token: null
         })
         console.log(response.data)
+        dispatch(hide('userCreate'))
     } catch (err) {
         console.log(err)
         throw new SubmissionError({

@@ -4,7 +4,7 @@ import { Field } from 'redux-form'
 
 import { Button } from '../../components/button/button.component'
 import { RenderCheckBox } from '../../util/redux-form/checkbox.forms'
-
+import _ from 'lodash'
 import './userview.styles.scss'
 
 export const UserView = ({
@@ -47,7 +47,9 @@ export const UserView = ({
                 small
                 inform
                 fullwidth
-                onClick={({ target: { name } }) => onUpdate(name)}
+                onClick={({ target: { name } }) =>
+                    onUpdate(name)
+                }
             >
                 Editar
             </Button>
