@@ -1,8 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { connectModal } from 'redux-modal'
-import Loadable from 'react-loadable'
-import { Loading } from '../../../main/main.routes'
 
 import Modal from 'react-modal'
 

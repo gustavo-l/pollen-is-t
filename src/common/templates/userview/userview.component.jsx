@@ -1,21 +1,9 @@
 import React from 'react'
-import { CheckBox } from '../../components/togglable/checkbox.component'
-import { Field } from 'redux-form'
 
 import { Button } from '../../components/button/button.component'
-import { RenderCheckBox } from '../../util/redux-form/checkbox.forms'
-import _ from 'lodash'
 import './userview.styles.scss'
 
-export const UserView = ({
-    avatar,
-    active,
-    data,
-    onDisable,
-    onUpdate,
-    checked,
-    onChangeHandler
-}) => (
+const UserView = ({ avatar, active, data, onDisable, onUpdate }) => (
     <div className="userview-container">
         {/* <div className="userview-checkbox flexitem-1">
             <CheckBox
@@ -47,9 +35,7 @@ export const UserView = ({
                 small
                 inform
                 fullwidth
-                onClick={({ target: { name } }) =>
-                    onUpdate(name)
-                }
+                onClick={({ target: { name } }) => onUpdate(name)}
             >
                 Editar
             </Button>
@@ -65,3 +51,4 @@ export const UserView = ({
         </div>
     </div>
 )
+export default UserView

@@ -1,18 +1,19 @@
-import React from 'react'
+import { reduxForm } from 'redux-form'
 import { Button } from '../common/components/button/button.component'
 import { Input } from '../common/components/input/input.component'
-import { show } from 'redux-modal'
 import { connect } from 'react-redux'
+import { show } from 'redux-modal'
 
-let UserForm = ({ pending, handleOpen }) => (
+import React from 'react'
+
+let ProductSearchForm = ({ pending, handleOpen }) => (
     <div>
         <div className="headline-user">
-            <h2 className="headline">Gerencie seus usuários</h2>
             <Button
                 className="action-button"
                 fullwidth
                 disabled={pending}
-                onClick={handleOpen('userCreate')}
+                onClick={handleOpen('productCreate')}
             >
                 Incluir
             </Button>
@@ -22,10 +23,8 @@ let UserForm = ({ pending, handleOpen }) => (
         </div>
     </div>
 )
-
-UserForm = connect(
+ProductSearchForm = reduxForm({ form: 'productCreate' })(ProductSearchForm)
+export default connect(
     null,
     dispatch => ({ handleOpen: name => () => dispatch(show(name)) })
-)(UserForm)
-
-export default UserForm
+)(ProductSearchForm)

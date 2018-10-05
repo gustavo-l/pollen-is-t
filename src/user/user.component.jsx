@@ -1,16 +1,14 @@
 import React from 'react'
 
-import { Button } from '../common/components/button/button.component'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { loadUsers, disableUser, updateUser } from './user.actions'
-import { UserView } from '../common/templates/userview/userview.component'
 import './user.styles.scss'
+import { show } from 'redux-modal'
 
 import _ from 'lodash'
 import Loadable from 'react-loadable'
-import { Loading } from '../main/main.routes'
-import { show } from 'redux-modal'
+import { Loading } from '../main/main.loading'
 
 import Modal from '../common/components/modal/modal.component'
 
@@ -22,6 +20,11 @@ const UserUpdate = Loadable({
     loader: () => import('./user.update'),
     loading: Loading
 })
+const UserView = Loadable({
+    loader: () => import('../common/templates/userview/userview.component'),
+    loading: Loading
+})
+
 let UserForm = Loadable({
     loader: () => import('./user.searchform'),
     loading: Loading
@@ -73,11 +76,6 @@ const mapDispatchToProps = dispatch => ({
     updateUser: ({ _id, ...rest }) => updateUser({ _id, ...rest })(dispatch),
     handleOpen: (name, props) => dispatch(show(name, props))
 })
-
-UserForm = connect(
-    null,
-    dispatch => ({ handleOpen: name => () => dispatch(show(name)) })
-)(UserForm)
 
 export default withRouter(
     connect(

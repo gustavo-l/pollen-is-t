@@ -33,14 +33,7 @@ let Main = ({ isAuth, logout, redirect, handleOpen }) => (
                 <Navitem label="Entrar" onClick={redirect('/login')} />
             </Navbar>
         )}
-        <div>
-            <button onClick={handleOpen('mymodal')}> HELLO </button>
-            <Modal name="mymodal">
-                <div>
-                    <h1>HELLO</h1>
-                </div>
-            </Modal>
-        </div>
+
         <div>
             <Routes />
         </div>

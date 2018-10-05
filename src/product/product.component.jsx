@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 
-import { Card } from '../common/components/card/card.component'
 import { connect } from 'react-redux'
 import {
     loadProducts,
@@ -11,9 +10,17 @@ import {
 } from './product.actions'
 import { productSelector } from './product.reducer'
 import ProductCreate from './product.create'
-
+import Modal from '../common/components/modal/modal.component'
 import './product.styles.scss'
+import ProductSearchForm from './product.searchform'
+import Loadable from 'react-loadable'
+import { Loading } from '../main/main.loading'
 
+const ProductView = Loadable({
+    loader: () =>
+        import('../common/templates/productview/productview.component'),
+    loading: Loading
+})
 class Product extends React.PureComponent {
     async componentDidMount() {
         this.props.loadProducts({ size: 10, page: 0 })
@@ -21,38 +28,23 @@ class Product extends React.PureComponent {
     render() {
         return (
             <div>
-                <h2>Seus produtos</h2>
-                {console.log(this.props.products)}
+                <ProductSearchForm pending={this.props.pending} />
                 <div className="product-container">
                     {this.props.products.map((data, index) => (
-                        <div key={index} className="product-item">
-                            <Card
-                                heading={data.code}
-                                description={data.description}
-                                title={data.name}
-                                avatar="https://via.placeholder.com/300x300"
-                            >
-                                {data.prices.map((price, index) => (
-                                    <div key={index}>
-                                        <b>{`R$ ${price.value}, Tamano ${
-                                            price.size
-                                        }\n`}</b>
-                                    </div>
-                                ))}
-                            </Card>
-                        </div>
+                        <ProductView data={data} key={index} />
                     ))}
                 </div>
-                <div className="panel">
+                <Modal name="productCreate">
                     <ProductCreate />
-                </div>
+                </Modal>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    products: productSelector(state)
+    products: productSelector(state),
+    pending: state.product.pending
 })
 
 const mapDispatchToProps = dispatch => ({
