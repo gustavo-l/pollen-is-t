@@ -18,23 +18,8 @@ const LoginForm = Loadable({
     loading: Loading
 })
 
-const SignupForm = Loadable({
-    loader: () => import('../signup/signup.component'),
-    loading: Loading
-})
-
-const User = Loadable({
-    loader: () => import('../user/user.component'),
-    loading: Loading
-})
-
 const Home = Loadable({
     loader: () => import('../home/home.component'),
-    loading: Loading
-})
-
-const Product = Loadable({
-    loader: () => import('../product/product.component'),
     loading: Loading
 })
 
@@ -48,21 +33,11 @@ export const Routes = () => (
     <div>
         <Switch>
             <Route path="/login" exact strict component={LoginForm} />
-            <Route path="/signup" exact strict component={SignupForm} />
-            <Route path="/" exact strict component={Home} />
             <SecureRoute
                 exact
                 strict
-                path="/user"
-                component={User}
-                routeGuard={RouteGuard}
-                redirectToPathWhenFail="/login"
-            />
-            <SecureRoute
-                exact
-                strict
-                path="/product"
-                component={Product}
+                path="/home"
+                component={Home}
                 routeGuard={RouteGuard}
                 redirectToPathWhenFail="/login"
             />
