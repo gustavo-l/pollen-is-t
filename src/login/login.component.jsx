@@ -12,10 +12,13 @@ import { connect } from 'react-redux'
  * *
  */
 
-let LoginForm = ({ sendGet, ...rest }) => (
+let LoginForm = ({ login, ...rest }) => (
     <div className="panel">
         <form>
-            <Button variant="warning" onClick={sendGet}>
+            <Button
+                variant="warning"
+                onClick={login({ user: 'logitz', password: '123' })}
+            >
                 Hello
             </Button>
         </form>
@@ -30,12 +33,16 @@ let LoginForm = ({ sendGet, ...rest }) => (
  */
 const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
-    login: () =>
+    login: ({ user, password }) => () =>
         dispatch({
             type: 'LOGIN',
             payload: {
                 url: '/auth',
                 method: 'post',
+                data: {
+                    user,
+                    password
+                },
                 success: response => console.log(response),
                 pending: () => console.log('pending'),
                 fail: response => console.log('fail')
