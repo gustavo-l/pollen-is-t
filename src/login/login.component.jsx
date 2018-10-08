@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 
 import Button from '../common/components/Button'
 import { connect } from 'react-redux'
+import { redirect, setToken } from '../main/main.session.reducer'
 
 /**
  *
@@ -43,7 +44,10 @@ const mapDispatchToProps = dispatch => ({
                     user,
                     password
                 },
-                success: response => console.log(response),
+                success: response => {
+                    setToken(response.data.token)
+                    redirect('/')
+                },
                 pending: () => console.log('pending'),
                 fail: response => console.log('fail')
             },
