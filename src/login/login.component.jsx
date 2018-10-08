@@ -48,7 +48,7 @@ let LoginForm = ({ handleSubmit, login, ...rest }) => (
  * @see {@link https://redux-form.com/7.4.2/docs/api/reduxform.md/}
  */
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state3 => ({})
 const mapDispatchToProps = dispatch => ({
     login: ({ user, password }) =>
         dispatch({
