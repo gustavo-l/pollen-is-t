@@ -47,6 +47,7 @@ let LoginForm = ({ handleSubmit, login, ...rest }) => (
  * ??validate: Função de validação
  * @see {@link https://redux-form.com/7.4.2/docs/api/reduxform.md/}
  */
+
 const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
     login: ({ user, password }) =>
