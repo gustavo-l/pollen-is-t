@@ -51,7 +51,7 @@ export const api = ({ getState, dispatch }) => next => async action => {
                     data: response
                 })
             )
-            if (success) success()
+            if (success) success(response)
         } catch (error) {
             dispatch(
                 apiFailAction({
@@ -59,7 +59,7 @@ export const api = ({ getState, dispatch }) => next => async action => {
                     error: error.response
                 })
             )
-            if (fail) fail()
+            if (fail) fail(error.response)
         }
     }
 }

@@ -36,9 +36,9 @@ const mapDispatchToProps = dispatch => ({
             payload: {
                 url: '/auth',
                 method: 'post',
-                success: () => console.log('success'),
+                success: response => console.log(response),
                 pending: () => console.log('pending'),
-                fail: () => console.log('fail')
+                fail: response => console.log('fail')
             },
             meta: {
                 api: true
