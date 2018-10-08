@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { reducer as formReducer } from 'redux-form'
 
 import { session } from './main.session.reducer'
-import { reducer as modal } from 'redux-modal'
 import logger from 'redux-logger'
 import { api } from './middlewares/api'
 
@@ -25,7 +24,6 @@ const middleware = composeWithDevTools(
  */
 const rootReducer = combineReducers({
     form: formReducer,
-    modal,
     session
 })
 
