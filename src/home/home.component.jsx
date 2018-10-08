@@ -1,5 +1,5 @@
 import React from 'react'
-import { isAuthSelector } from '../main/main.session'
+import { isAuthSelector } from '../main/main.session.reducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 let Home = ({ isAuth }) => (

@@ -1,8 +1,8 @@
 import { push } from 'connected-react-router'
+import { createSelector } from 'reselect'
 
 export const session = (
     state = {
-        isAuth: localStorage.getItem('token') !== null,
         token: localStorage.getItem('token')
     },
     action
@@ -11,7 +11,6 @@ export const session = (
         case '@@session/TOKEN_SET': {
             return {
                 ...state,
-                isAuth: true,
                 token: action.payload.token
             }
         }
@@ -19,7 +18,6 @@ export const session = (
             localStorage.clear()
             return {
                 ...state,
-                isAuth: false,
                 token: null
             }
         }
@@ -30,8 +28,10 @@ export const session = (
 }
 
 export const tokenSelector = state => state.session.token
-export const isAuthSelector = state => state.session.isAuth
-
+export const isAuthSelector = createSelector(
+    tokenSelector,
+    token => token !== null
+)
 export const logout = dispatch => {
     dispatch(push('/login'))
     dispatch({ type: '@@session/TOKEN_CLEAR' })

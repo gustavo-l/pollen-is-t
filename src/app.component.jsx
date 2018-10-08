@@ -6,7 +6,10 @@ import { Provider } from 'react-redux'
 import { store, hashHistory } from './main/main.store'
 import { ConnectedRouter } from 'connected-react-router'
 import Main from './main/main.component'
-import '../public/index.scss'
+
+import '../node_modules/bootstrap/dist/js/bootstrap.js'
+
+import './app.styles.scss'
 
 /**
  * *HashRouter: Componente do react-router equivalente à <Router history={hash}></Router>

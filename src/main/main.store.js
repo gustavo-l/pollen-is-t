@@ -5,22 +5,18 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { reducer as formReducer } from 'redux-form'
 
-import { users } from '../user/user.reducer'
-// import { modal } from '../common/components/modal/modal.reducer'
-import { product } from '../product/product.reducer'
-
-import { session } from './main.session'
+import { session } from './main.session.reducer'
 import { reducer as modal } from 'redux-modal'
 import logger from 'redux-logger'
-import thunk from 'redux-thunk'
+import { api } from './middlewares/api'
 
 export const hashHistory = createHashHistory()
 
 /**
- * *middleware: middlewares da aplicação, thunk logger e router
+ * *middleware: middlewares da aplicação, logger e router
  */
 const middleware = composeWithDevTools(
-    applyMiddleware(thunk, logger, routerMiddleware(hashHistory))
+    applyMiddleware(routerMiddleware(hashHistory), api, logger)
 )
 
 /**
@@ -29,10 +25,8 @@ const middleware = composeWithDevTools(
  */
 const rootReducer = combineReducers({
     form: formReducer,
-    users,
     modal,
-    session,
-    product
+    session
 })
 
 export const store = createStore(
