@@ -33,12 +33,12 @@ export const isAuthSelector = createSelector(
 )
 export const setToken = token => {
     localStorage.setItem('token', token)
-    store.dispatch({ type: 'TOKEN_SET', payload: { token } })
+    store.dispatch({ type: '[TOKEN] TOKEN_SET', payload: { token } })
 }
 export const logout = () => {
     localStorage.removeItem('token')
     store.dispatch(push('/login'))
-    store.dispatch({ type: 'TOKEN_CLEAR' })
-    store.dispatch({ type: 'LOGOUT' })
+    store.dispatch({ type: '[TOKEN] TOKEN_CLEAR' })
+    store.dispatch({ type: '[TOKEN] LOGOUT' })
 }
 export const redirect = to => store.dispatch(push(to))

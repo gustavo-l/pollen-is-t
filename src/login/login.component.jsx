@@ -8,6 +8,8 @@ import { redirect, setToken } from '../main/main.session.reducer'
 import FormGroup from '../common/components/Forms/FormGroup'
 import { Field, reduxForm, SubmissionError } from 'redux-form'
 import { RenderInput } from '../common/util/redux-form/RenderInput'
+import { createApiRequest } from '../main/action-creators/api.action'
+import Modal from '../common/components/Modal/Modal'
 /**
  *
  * ?Formulario redux form
@@ -37,7 +39,21 @@ let LoginForm = ({ handleSubmit, login, ...rest }) => (
             <Button type="submit" variant="warning">
                 Entrar
             </Button>
+            <Button
+                data-toggle="modal"
+                data-target="#hellomodal"
+                variant="danger"
+            >
+                Modal
+            </Button>
         </FormGroup>
+        <Modal
+            id="hellomodal"
+            title="hello"
+            body={<p>this is a modal</p>}
+            footer={<Button variant="primary">Hello</Button>}
+            noClickOutside
+        />
     </form>
 )
 
@@ -48,12 +64,13 @@ let LoginForm = ({ handleSubmit, login, ...rest }) => (
  * @see {@link https://redux-form.com/7.4.2/docs/api/reduxform.md/}
  */
 
-const mapStateToProps = state3 => ({})
+const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
     login: ({ user, password }) =>
-        dispatch({
-            type: 'LOGIN',
-            payload: {
+        dispatch(
+            createApiRequest({
+                type: 'LOGIN',
+                context: 'USER',
                 url: '/auth',
                 method: 'post',
                 data: {
@@ -71,11 +88,8 @@ const mapDispatchToProps = dispatch => ({
                         password: 'Usuario ou senha incorretos'
                     })
                 }
-            },
-            meta: {
-                api: true
-            }
-        })
+            })
+        )
 })
 
 LoginForm = reduxForm({ form: 'loginForm', validate })(LoginForm)
